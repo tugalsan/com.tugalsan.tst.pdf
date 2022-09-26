@@ -1,10 +1,12 @@
 package com.tugalsan.tst.pdf;
 
+import com.tugalsan.api.file.client.TGS_FileUtilsTur;
 import com.tugalsan.api.file.pdf.sign.server.*;
 import com.tugalsan.api.file.server.*;
 import com.tugalsan.api.log.server.*;
 import java.nio.file.*;
 import java.util.*;
+import org.fusesource.jansi.AnsiConsole;
 
 public class Main {
 
@@ -29,7 +31,26 @@ public class Main {
         d.cr("main", "give me key pass");
         var keyPass = new Scanner(System.in).nextLine();
         d.cr("main", "signing...", keyPass);
-        var outFile = TS_FilePdfSignUtils.signIfNotSignedBefore(keyPath, keyPass, pdfPath, "_signName_", "_signLoc_", "_signReason_");
+
+        var cfg = new TS_FilePdfSignSslCfg(keyPath, keyPass);
+
+        //TSA NULL
+        var outFile = TS_FilePdfSignUtils.signIfNotSignedBefore(cfg, pdfPath, "_signName_", "_signLoc_", "_signReason_");
+        TS_FileUtils.rename(outFile, TS_FileUtils.getNameLabel(outFile) + "_null.pdf");
+
+        //TSA X
+        for (var tsa : TS_FilePdfSignUtils.lstTsa()) {
+            var tsaName = TGS_FileUtilsTur.toSafe(tsa.toString());
+            cfg.setTsa(tsa);
+            try {
+                outFile = TS_FilePdfSignUtils.signIfNotSignedBefore(cfg, pdfPath, "_signName_", "_signLoc_", "_signReason_");
+                TS_FileUtils.rename(outFile, TS_FileUtils.getNameLabel(outFile) + "_" + tsaName + ".pdf");
+            } catch (Exception e) {
+                System.err.println("ERROR ON TSA: " + tsaName);
+                e.printStackTrace();
+            }
+        }
+
         d.cr("main", "check", outFile);
     }
 }
