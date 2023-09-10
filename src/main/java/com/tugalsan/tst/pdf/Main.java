@@ -5,6 +5,7 @@ import com.tugalsan.api.file.pdf.sign.server.*;
 import com.tugalsan.api.file.server.*;
 import com.tugalsan.api.input.server.TS_InputKeyboardUtils;
 import com.tugalsan.api.log.server.*;
+import com.tugalsan.api.unsafe.client.TGS_UnSafe;
 import java.nio.file.*;
 
 public class Main {
@@ -18,15 +19,15 @@ public class Main {
             return;
         }
         var keyPath = Path.of("D:\\xampp_data\\SSL\\tomcat.jks");
-        
+
         if (!TS_FileUtils.isExistFile(keyPath)) {
             d.ce("main", "keyPath not exists", keyPath);
             return;
         }
-        
+
         d.cr("main", "give me key pass");
         var keyPass = TS_InputKeyboardUtils.readLineFromConsole();
-        
+
         d.cr("main", "signing...", keyPass);
         var cfg = new TS_FilePdfSignSslCfg(keyPath, keyPass);
 
@@ -38,13 +39,14 @@ public class Main {
         for (var tsa : TS_FilePdfSignUtils.lstTsa()) {
             var tsaName = TGS_FileUtilsTur.toSafe(tsa.toString());
             cfg.setTsa(tsa);
-            try {
-                outFile = TS_FilePdfSignUtils.signIfNotSignedBefore(cfg, pdfPath, "_signName_", "_signLoc_", "_signReason_");
-                TS_FileUtils.rename(outFile, TS_FileUtils.getNameLabel(outFile) + "_" + tsaName + ".pdf");
-            } catch (Exception e) {
+            TGS_UnSafe.run(() -> {
+                var of = TS_FilePdfSignUtils.signIfNotSignedBefore(cfg, pdfPath, "_signName_", "_signLoc_", "_signReason_");
+                TS_FileUtils.rename(of, TS_FileUtils.getNameLabel(of) + "_" + tsaName + ".pdf");
+            }, e -> {
+                TGS_UnSafe.throwIfInterruptedException(e);
                 System.err.println("ERROR ON TSA: " + tsaName);
                 e.printStackTrace();
-            }
+            });
         }
 
         d.cr("main", "check", outFile);

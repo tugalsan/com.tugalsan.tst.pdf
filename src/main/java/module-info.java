@@ -6,6 +6,7 @@ module com.tugalsan.tst.pdf {
     requires com.tugalsan.api.validator;
     requires com.tugalsan.api.tuple;
     requires com.tugalsan.api.input;
+    requires com.tugalsan.api.unsafe;
     requires com.tugalsan.api.file;
     requires com.tugalsan.api.url;
     requires com.tugalsan.api.file.pdf.sign;
