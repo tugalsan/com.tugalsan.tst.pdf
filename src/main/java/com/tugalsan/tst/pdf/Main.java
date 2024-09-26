@@ -23,13 +23,16 @@ public class Main {
 
     public static void test_toJpg() {
         var pdfBase = Path.of("C:\\Users\\me\\Desktop\\PDF");
+        var pageIdx = 0;
+        var DPI = 300;
+        var jpgCompression = 1f;
         TS_DirectoryUtils.subFiles(pdfBase, "*.pdf", true, false).forEach(pdfFile -> {
-            var u_bi = TS_FilePdfBox3UtilsImage.ofBufferedImage(pdfFile, 0, 300);
+            var u_bi = TS_FilePdfBox3UtilsImage.ofBufferedImage(pdfFile, pageIdx, DPI);
             if (u_bi.isExcuse()) {
                 d.ce("test_toJpg", pdfFile, u_bi.excuse().getMessage());
                 u_bi.excuse().printStackTrace();
             } else {
-                TS_FileImageUtils.toFile(u_bi.value(), Path.of(pdfFile + ".jpg"), 1);
+                TS_FileImageUtils.toFile(u_bi.value(), Path.of(pdfFile + ".jpg"), jpgCompression);
             }
         });
     }
