@@ -24,12 +24,12 @@ public class Main {
     public static void test_toJpg() {
         var pdfBase = Path.of("C:\\Users\\me\\Desktop\\PDF");
         TS_DirectoryUtils.subFiles(pdfBase, "*.pdf", true, false).forEach(pdfFile -> {
-            var u = TS_FilePdfBox3UtilsImage.toJpg(pdfFile, 0, 300);
-            if (u.isExcuse()) {
-                d.ce("test_toJpg", pdfFile, u.excuse().getMessage());
-                u.excuse().printStackTrace();
+            var u_bi = TS_FilePdfBox3UtilsImage.ofBufferedImage(pdfFile, 0, 300);
+            if (u_bi.isExcuse()) {
+                d.ce("test_toJpg", pdfFile, u_bi.excuse().getMessage());
+                u_bi.excuse().printStackTrace();
             } else {
-                TS_FileImageUtils.toFile(u.value(), Path.of(pdfFile + ".jpg"), 1);
+                TS_FileImageUtils.toFile(u_bi.value(), Path.of(pdfFile + ".jpg"), 1);
             }
         });
     }
