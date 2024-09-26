@@ -64,7 +64,12 @@ public class Main {
         d.cr("main", "signing...", keyPass);
         var cfgSsl = new TS_LibFilePdfSignCfgSsl(keyPath, keyPass, TS_LibFilePdfSignCfgSsl.defaultTsa());
         var cfgDesc = new TS_LibFilePdfSignCfgDesc("_signReason_", "_signLoc_", "_signName_");
-        var u = TS_LibFilePdfSignUtils.execute(TS_LibFilePdfSignUtils.pathDriver(), cfgSsl, cfgDesc, pdfPathIn);
+        var o_driver = TS_LibFilePdfSignUtils.pathDriver();
+        if (o_driver.isEmpty()) {
+            d.ce("main", "driver not found!");
+            return;
+        }
+        var u = TS_LibFilePdfSignUtils.execute(o_driver.orElseThrow(), cfgSsl, cfgDesc, pdfPathIn);
         if (u.isExcuse()) {
             d.ce("main", u.excuse().getMessage());
             return;
