@@ -1,6 +1,7 @@
 package com.tugalsan.tst.pdf;
 
 import com.tugalsan.api.file.img.server.TS_FileImageUtils;
+import com.tugalsan.api.file.pdf.openpdf.server.TS_FilePdfOpenPdfUtilsImage;
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsImage;
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsText;
 import com.tugalsan.api.file.server.*;
@@ -16,12 +17,15 @@ public class Main {
     private static TS_Log d = TS_Log.of(Main.class);
 
     public static void main(String[] args) {
-        //test_sign();
-        //test_combine();
-        test_toJpg();
+//        test_pdfbox3_sign();
+//        test_pdfbox3_combine();
+//        test_pdfbox3_toJpg();
+        var dirBase = Path.of("C:\\Users\\me\\Desktop\\PDF");
+        var lstJpg = TS_DirectoryUtils.subFiles(dirBase, "*.jpg", true, false);
+        TS_FilePdfOpenPdfUtilsImage.toPdf(dirBase.resolve("HelloImage.pdf"), lstJpg);
     }
 
-    public static void test_toJpg() {
+    private static void test_pdfbox3_toJpg() {
         var pdfBase = Path.of("C:\\Users\\me\\Desktop\\PDF");
         var pageIdx = 0;
         var DPI = 300;
@@ -37,14 +41,14 @@ public class Main {
         });
     }
 
-    public static void test_combine() {
+    private static void test_pdfbox3_combine() {
         var pdfBase = Path.of("C:\\Users\\me\\Desktop\\PDF");
         var pdfDest = pdfBase.resolve("text.pdf");
 //        TS_FileUtils.deleteFileIfExists(pdfDest);
         TS_FilePdfBox3UtilsText.createPageText(pdfDest, "ali gel 1 ali gel 2 ali gel 3  ali gel 4 ali gel 5 ali gel 6 ali gel 7 ali gel 8 ali gel 9 ali gel 10 ali gel 11 ali gel 12");
     }
 
-    public static void test_sign() {
+    private static void test_pdfbox3_sign() {
         var pdfPathIn = Path.of("C:\\git\\dsk\\com.tugalsan.dsk.pdf.sign\\file.pdf");
         var pdfPathOut = TS_LibFilePdfSignUtils.pathOutput(pdfPathIn);
         if (!TS_FileUtils.isExistFile(pdfPathIn)) {

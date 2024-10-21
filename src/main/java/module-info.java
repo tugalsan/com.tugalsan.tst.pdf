@@ -9,6 +9,7 @@ module com.tugalsan.tst.pdf {
     requires com.tugalsan.api.file;
     requires com.tugalsan.api.file.img;
     requires com.tugalsan.api.file.pdf.pdfbox3;
+    requires com.tugalsan.api.file.pdf.openpdf;
     requires com.tugalsan.api.url;
     requires com.tugalsan.api.union;
     requires com.tugalsan.lib.file.pdf.sign;
