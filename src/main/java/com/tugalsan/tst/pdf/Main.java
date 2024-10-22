@@ -21,10 +21,17 @@ public class Main {
 //        test_pdfbox3_sign();
 //        test_pdfbox3_combine();
 //        test_pdfbox3_toJpg();
-        var dirBase = Path.of("C:\\Users\\me\\Desktop\\PDF");
-        var lstJpg = TS_DirectoryUtils.subFiles(dirBase, "*.jpg", true, false);
-        TS_FilePdfOpenPdfUtilsImage.toPdf(TS_FilePdfOpenPdfUtilsPage.PAGE_INFO_A4_LAND_0_0_0_0, dirBase.resolve("HelloImage.pdf"), 1, lstJpg);
-
+        var srcDir = Path.of("C:/Users/me/Desktop/PDF/base");
+        //var lstJpg = TS_DirectoryUtils.subFiles(dirBase, "*.jpg", true, false);
+        //TS_FilePdfOpenPdfUtilsImage.toPdf(TS_FilePdfOpenPdfUtilsPage.PAGE_INFO_A4_LAND_0_0_0_0, dirBase.resolve("HelloImage.pdf"), 1, lstJpg);
+        var lst = TS_FilePdfOpenPdfUtilsImage.toPdf_fromDir(TS_FilePdfOpenPdfUtilsPage.PAGE_INFO_A4_LAND_0_0_0_0, srcDir, 1, false, false);
+        lst.forEach(u -> {
+            if (u.isExcuse()) {
+                d.ct("main", u.excuse());
+            } else {
+                d.cr("main", u.value());
+            }
+        });
     }
 
     private static void test_pdfbox3_toJpg() {
