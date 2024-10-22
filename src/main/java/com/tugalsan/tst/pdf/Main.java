@@ -2,6 +2,7 @@ package com.tugalsan.tst.pdf;
 
 import com.tugalsan.api.file.img.server.TS_FileImageUtils;
 import com.tugalsan.api.file.pdf.openpdf.server.TS_FilePdfOpenPdfUtilsImage;
+import com.tugalsan.api.file.pdf.openpdf.server.TS_FilePdfOpenPdfUtilsPage;
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsImage;
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsText;
 import com.tugalsan.api.file.server.*;
@@ -22,7 +23,8 @@ public class Main {
 //        test_pdfbox3_toJpg();
         var dirBase = Path.of("C:\\Users\\me\\Desktop\\PDF");
         var lstJpg = TS_DirectoryUtils.subFiles(dirBase, "*.jpg", true, false);
-        TS_FilePdfOpenPdfUtilsImage.toPdf(dirBase.resolve("HelloImage.pdf"), lstJpg);
+        TS_FilePdfOpenPdfUtilsImage.toPdf(TS_FilePdfOpenPdfUtilsPage.PAGE_INFO_A4_LAND_0_0_0_0, dirBase.resolve("HelloImage.pdf"), 1, lstJpg);
+
     }
 
     private static void test_pdfbox3_toJpg() {
