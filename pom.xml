@@ -5,9 +5,9 @@
     <artifactId>com.tugalsan.tst.pdf</artifactId>
     <version>1.0-SNAPSHOT</version>
     <dependencies>
-        <dependency>
+        <!--<dependency>
             <groupId>org.gwtproject</groupId>
-            <artifactId>gwt-user</artifactId><!--gwt-user ver2022.07.05 -->
+            <artifactId>gwt-user</artifactId><!- -gwt-user ver2022.07.05 - ->
             <exclusions>
                 <exclusion>
                     <groupId>com.google.jsinterop</groupId>
@@ -27,9 +27,13 @@
                 </exclusion>   
             </exclusions>
             <version>2.12.1</version>
-        </dependency>
-
+        </dependency>-->
         <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox-examples</artifactId>
+            <version>3.0.4</version>
+        </dependency>
+        <!--<dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>com.tugalsan.api.file</artifactId>
             <version>${project.version}</version>
@@ -44,7 +48,7 @@
             <artifactId>com.tugalsan.api.file.pdf.pdfbox3</artifactId>
             <version>${project.version}</version>
         </dependency>
-                <dependency>
+        <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>com.tugalsan.api.file.pdf.openpdf</artifactId>
             <version>${project.version}</version>
@@ -58,7 +62,7 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>com.tugalsan.api.input</artifactId>
             <version>${project.version}</version>
-        </dependency>
+        </dependency>-->
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

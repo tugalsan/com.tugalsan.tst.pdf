@@ -1,13 +1,9 @@
 package com.tugalsan.tst.pdf;
 
-import java.io.FileInputStream;
-import java.nio.file.Path;
-import java.security.KeyStore;
-
+//NOT WORKING
 public class SignExample2 {
 
 //    public static void sign(Path pdfInput, Path pdfOut, Path p12, String password) {
-
 //        PDFSecure pdfDoc = new PDFSecure(pdfInput.toString(), null);
 //
 //        FileInputStream pkcs12Stream = new FileInputStream(p12.toString());

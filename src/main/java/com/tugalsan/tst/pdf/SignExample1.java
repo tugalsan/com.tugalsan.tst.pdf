@@ -1,9 +1,6 @@
 package com.tugalsan.tst.pdf;
 
-import java.io.*;
-import java.security.*;
-import java.security.cert.Certificate;
-
+//NOT WORKING
 public class SignExample1 {
 
 //    static String fname = "D:\\HelloWorld.pdf";
