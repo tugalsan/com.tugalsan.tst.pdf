@@ -1,5 +1,6 @@
 package com.tugalsan.tst.pdf;
 
+import com.tugalsan.api.unsafe.client.TGS_UnSafe;
 import java.awt.geom.Rectangle2D;
 import java.io.InputStream;
 import java.nio.file.*;
@@ -58,6 +59,7 @@ public class Main {
                     signatureFieldName
             );
         } catch (Exception e) {
+            TGS_UnSafe.throwIfInterruptedException(e);
             e.printStackTrace();
         }
     }

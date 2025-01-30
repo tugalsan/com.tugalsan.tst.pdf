@@ -1,6 +1,9 @@
 package com.tugalsan.tst.pdf;
 
 //NOT WORKING
+
+import com.tugalsan.api.unsafe.client.TGS_UnSafe;
+
 public class SignExample1 {
 
 //    static String fname = "D:\\HelloWorld.pdf";
@@ -10,6 +13,7 @@ public class SignExample1 {
 //        try {
 //            SignExample1.signPdf();
 //        } catch (Exception e) {
+//                TGS_UnSafe.throwIfInterruptedException(e);
 //        }
 //    }
 //
@@ -49,6 +53,7 @@ public class SignExample1 {
 //
 //            return true;
 //        } catch (Exception key) {
+//                TGS_UnSafe.throwIfInterruptedException(e);
 //            throw new Exception(key);
 //        }
 //    }
