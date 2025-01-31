@@ -6,7 +6,10 @@ module com.tugalsan.tst.pdf {
 //    requires org.bouncycastle.pkix;
 //    requires org.apache.commons.logging;
 //    requires org.bouncycastle.util;
-    requires pdfbox.examples;
+    requires com.tugalsan.api.log;
+    requires com.tugalsan.api.file;
+    requires com.tugalsan.api.file.pdf.openpdf;
+    requires com.tugalsan.api.file.pdf.pdfbox3;
 //    requires com.tugalsan.api.log;
 //    requires com.tugalsan.api.function;
 //    requires com.tugalsan.api.tuple;

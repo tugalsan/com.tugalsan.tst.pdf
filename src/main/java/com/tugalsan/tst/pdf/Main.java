@@ -1,69 +1,83 @@
 package com.tugalsan.tst.pdf;
 
-import com.tugalsan.api.unsafe.client.TGS_UnSafe;
-import java.awt.geom.Rectangle2D;
-import java.io.InputStream;
-import java.nio.file.*;
-import java.security.KeyStore;
-import org.apache.pdfbox.examples.signature.CreateVisibleSignature2;
+import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsHtml;
+import com.tugalsan.api.file.server.TS_DirectoryUtils;
+import com.tugalsan.api.file.server.TS_FileUtils;
+import com.tugalsan.api.log.server.TS_Log;
+import java.nio.file.Path;
 
 public class Main {
 
-//    private static TS_Log d = TS_Log.of(Main.class);
-    public static void main(String[] args) {
-        test_pdfbox3_sign_internally_simplfied();
+    final private static TS_Log d = TS_Log.of(Main.class);
+
+    public static void main(String... args) {
+        d.cr("main", "begin");
+        test_pdfbox3_pdf_to_html();
+//        test_pdfbox3_sign_internally_simplfied();
 //        test_pdfbox3_sign_internally();
 //        test_pdfbox3_sign();
 //        test_pdfbox3_combine();
 //        test_pdfbox3_toJpg();
 //        test_openpdf_img_to_pdf();
 //        test_pdfbox3_sign_externally();
+        d.cr("main", "end");
     }
 
-    private static void test_pdfbox3_sign_internally_simplfied() {
-        try {
-            //VARIABLES
-            var pathStore = Path.of("C:\\dat\\ssl\\mesa\\tomcat.jks");
-            CharSequence password = "pWjXvhjhYpzPVeu33ZtIBgDkfq2hZa71";
-            var pathPdfInput = Path.of("C:\\Users\\me\\Desktop\\PDF\\HelloImage.pdf");
-            var pathPdfOutput = pathPdfInput.resolveSibling(pathPdfInput.toFile().getName() + "_signed.pdf");
-            var rectangle = new Rectangle2D.Float(10, 200, 150, 50);
-            var useExternalSignScnerio = false;
-            Path optional_pathImgSign = null;
-            var signatureFieldName = "abc";
-            String tsa = null;
-
-            //KEYSTORE
-            KeyStore keystore;
-            var strPathStore = pathStore.toString().toUpperCase();
-            if (strPathStore.endsWith("JKS")) {
-                keystore = KeyStore.getInstance("JKS");
-            } else {
-                keystore = KeyStore.getInstance("PKCS12");
-            }
-            try (InputStream is = Files.newInputStream(pathStore)) {
-                keystore.load(is, password.toString().toCharArray());
-            }
-
-            //SIGNER
-            var signer = new CreateVisibleSignature2(keystore, password.toString().toCharArray());
-            if (optional_pathImgSign != null) {
-                signer.setImageFile(optional_pathImgSign.toFile());
-            }
-            signer.setExternalSigning(useExternalSignScnerio);
-            signer.signPDF(
-                    pathPdfInput.toFile(),
-                    pathPdfOutput.toFile(),
-                    rectangle,
-                    tsa,
-                    signatureFieldName
-            );
-        } catch (Exception e) {
-            TGS_UnSafe.throwIfInterruptedException(e);
-            e.printStackTrace();
-        }
+    private static void test_pdfbox3_pdf_to_html() {
+        d.cr("test_pdfbox3_pdf_to_html", "begin");
+        var pathMainDir = Path.of("C:\\git\\tst\\com.tugalsan.tst.pdf");
+        TS_DirectoryUtils.subFiles(pathMainDir, "*.pdf", true, true).parallelStream().forEach(srcPDF -> {
+            d.cr("test_pdfbox3_pdf_to_html", srcPDF, "begin");
+            var dstHTM = srcPDF.resolveSibling(TS_FileUtils.getNameLabel(srcPDF) + ".htm");
+            TS_FilePdfBox3UtilsHtml.toHtml(srcPDF, dstHTM);
+            d.cr("test_pdfbox3_pdf_to_html", srcPDF, "end");
+        });
+        d.cr("test_pdfbox3_pdf_to_html", "end");
     }
 
+//    private static void test_pdfbox3_sign_internally_simplfied() {
+//        try {
+//            //VARIABLES
+//            var pathStore = Path.of("C:\\dat\\ssl\\mesa\\tomcat.jks");
+//            CharSequence password = "pWjXvhjhYpzPVeu33ZtIBgDkfq2hZa71";
+//            var pathPdfInput = Path.of("C:\\Users\\me\\Desktop\\PDF\\HelloImage.pdf");
+//            var pathPdfOutput = pathPdfInput.resolveSibling(pathPdfInput.toFile().getName() + "_signed.pdf");
+//            var rectangle = new Rectangle2D.Float(10, 200, 150, 50);
+//            var useExternalSignScnerio = false;
+//            Path optional_pathImgSign = null;
+//            var signatureFieldName = "abc";
+//            String tsa = null;
+//
+//            //KEYSTORE
+//            KeyStore keystore;
+//            var strPathStore = pathStore.toString().toUpperCase();
+//            if (strPathStore.endsWith("JKS")) {
+//                keystore = KeyStore.getInstance("JKS");
+//            } else {
+//                keystore = KeyStore.getInstance("PKCS12");
+//            }
+//            try (InputStream is = Files.newInputStream(pathStore)) {
+//                keystore.load(is, password.toString().toCharArray());
+//            }
+//
+//            //SIGNER
+//            var signer = new CreateVisibleSignature2(keystore, password.toString().toCharArray());
+//            if (optional_pathImgSign != null) {
+//                signer.setImageFile(optional_pathImgSign.toFile());
+//            }
+//            signer.setExternalSigning(useExternalSignScnerio);
+//            signer.signPDF(
+//                    pathPdfInput.toFile(),
+//                    pathPdfOutput.toFile(),
+//                    rectangle,
+//                    tsa,
+//                    signatureFieldName
+//            );
+//        } catch (Exception e) {
+//            TGS_UnSafe.throwIfInterruptedException(e);
+//            e.printStackTrace();
+//        }
+//    }
 //    private static void test_pdfbox3_sign_internally() {
 //        var u_sign = PdfBox3Sign.sign(
 //                Path.of("C:\\dat\\ssl\\mesa\\tomcat.jks"),//pathP12, 
