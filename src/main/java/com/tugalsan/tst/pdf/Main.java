@@ -1,9 +1,11 @@
 package com.tugalsan.tst.pdf;
 
+import com.tugalsan.api.file.pdf.openpdf.server.TS_FilePdfOpenPdfUtilsHtml;
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsHtml;
 import com.tugalsan.api.file.server.TS_DirectoryUtils;
 import com.tugalsan.api.file.server.TS_FileUtils;
 import com.tugalsan.api.log.server.TS_Log;
+import com.tugalsan.api.unsafe.client.TGS_UnSafe;
 import java.nio.file.Path;
 
 public class Main {
@@ -12,7 +14,9 @@ public class Main {
 
     public static void main(String... args) {
         d.cr("main", "begin");
-        test_pdfbox3_pdf_to_html();
+//        test_openpdf_htm_to_pdf();
+        test_pdfbox3_htm_to_pdf();
+//        test_pdfbox3_pdf_to_html();
 //        test_pdfbox3_sign_internally_simplfied();
 //        test_pdfbox3_sign_internally();
 //        test_pdfbox3_sign();
@@ -21,6 +25,22 @@ public class Main {
 //        test_openpdf_img_to_pdf();
 //        test_pdfbox3_sign_externally();
         d.cr("main", "end");
+    }
+
+    private static void test_openpdf_htm_to_pdf() {
+        var pathSrcHtm = Path.of("C:\\git\\tst\\com.tugalsan.tst.pdf\\a.htm");
+        var pathDstPdf = pathSrcHtm.resolveSibling(TS_FileUtils.getNameLabel(pathSrcHtm) + ".pdf");
+        TS_FilePdfOpenPdfUtilsHtml.toPdf(pathDstPdf, pathDstPdf);
+        d.cr("test_openpdf_htm_to_pdf", "see", pathDstPdf);
+    }
+    private static void test_pdfbox3_htm_to_pdf() {
+        var pathSrcHtm = Path.of("C:\\git\\tst\\com.tugalsan.tst.pdf\\a.htm");
+        var pathDstPdf = pathSrcHtm.resolveSibling(TS_FileUtils.getNameLabel(pathSrcHtm) + ".pdf");
+        var u = TS_FilePdfBox3UtilsHtml.toPdf(pathSrcHtm, pathDstPdf);
+        if (u.isExcuse()) {
+            TGS_UnSafe.thrw(u.excuse());
+        }
+        d.cr("test_pdfbox3_htm_to_pdf", "see", pathDstPdf);
     }
 
     private static void test_pdfbox3_pdf_to_html() {

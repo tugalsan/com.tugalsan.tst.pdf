@@ -8,6 +8,8 @@ module com.tugalsan.tst.pdf {
 //    requires org.bouncycastle.util;
     requires com.tugalsan.api.log;
     requires com.tugalsan.api.file;
+    requires com.tugalsan.api.unsafe;
+    requires com.tugalsan.api.union;
     requires com.tugalsan.api.file.pdf.openpdf;
     requires com.tugalsan.api.file.pdf.pdfbox3;
 //    requires com.tugalsan.api.log;

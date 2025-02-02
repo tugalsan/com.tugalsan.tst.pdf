@@ -1,7 +1,7 @@
 package com.tugalsan.tst.pdf;
 
 //NOT WORKING
-public class PdfBox3Sign {
+public class SignExample3 {
 
 //    public static Path resolvePathPdfOutput(Path pathPdfInput) {
 //        return pathPdfInput.resolveSibling(TS_FileUtils.getNameLabel(pathPdfInput) + "_signed.pdf");

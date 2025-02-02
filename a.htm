@@ -1,0 +1,1627 @@
+<!doctype html>
+<html lang="tr" dir="ltr" class="Light-Cream">
+<head>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' ><rect width='100%' height='100%' /><text x='-1' y='15.5' stroke='red'>📈</text></svg>" type="image/svg+xml" />
+<meta charset='UTF-8'>
+<title>Giriş Formu (Üzerinde İşlem Yapılacak Müşteri Ürünü)</title>
+<style>
+body {
+   margin-left: 5px !important;
+   margin-right: 5px !important;
+   margin-top: 5px !important;
+   margin-bottom: 5px !important;
+}
+</style>
+<script>
+window.boot_loader_main = function () {
+console.log("index.jsp: welcome");
+};
+let protocol = 'https';
+let hostname = 'localhost';
+let port = 9443;
+var script = document.createElement('script');
+script.src = 'https://localhost:9443/res-common/res/js/boot_loader.js'
+script.type = 'text/javascript';
+document.head.appendChild(script);
+</script>
+<style>
+/** ref:https://github.com/cognitom/paper-css  **/
+@page { margin: 0 }
+body { margin: 0 }
+.sheet {
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  page-break-after: always;
+}
+
+/** Paper sizes **/
+body.A3               .sheet { width: 297mm; min-height: 419mm }
+body.A3.landscape     .sheet { width: 420mm; min-height: 296mm }
+body.A4               .sheet { width: 210mm; min-height: 296mm }
+body.A4.landscape     .sheet { width: 297mm; min-height: 209mm }
+body.A5               .sheet { width: 148mm; min-height: 209mm }
+body.A5.landscape     .sheet { width: 210mm; min-height: 147mm }
+body.letter           .sheet { width: 216mm; min-height: 279mm }
+body.letter.landscape .sheet { width: 280mm; min-height: 215mm }
+body.legal            .sheet { width: 216mm; min-height: 356mm }
+body.legal.landscape  .sheet { width: 357mm; min-height: 215mm }
+
+/** Padding area **/
+.sheet.padding-10mm { padding: 10mm }
+.sheet.padding-15mm { padding: 15mm }
+.sheet.padding-20mm { padding: 20mm }
+.sheet.padding-25mm { padding: 25mm }
+
+/** For screen preview **/
+@media screen {
+  body { background: #e0e0e0 }
+  .sheet {
+    background: white;
+    box-shadow: 0 .5mm 2mm rgba(0,0,0,.3);
+    margin: 5mm auto;
+  }
+}
+
+/** Fix for Chrome issue #273306 **/
+@media print {
+           body.A3.landscape { width: 420mm }
+  body.A3, body.A4.landscape { width: 297mm }
+  body.A4, body.A5.landscape { width: 210mm }
+  body.A5                    { width: 148mm }
+  body.letter, body.legal    { width: 216mm }
+  body.letter.landscape      { width: 280mm }
+  body.legal.landscape       { width: 357mm }
+}
+table {
+  table-layout:fixed;
+}
+</style>
+<style>@page { size: A4 portrait }</style>
+</head>
+<body class='A4 portrait'>
+<div class="AppModule_configLayout">
+<span style=''>
+<section class='sheet padding-10mm'></span>
+
+<table class='styled-table' style='border-spacing:0;border-collapse:collapse;border:1px solid black; width:100%;'>
+  <tr>
+  <td style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:32%;height:31px;'>
+<img style='display:block;max-width:100%;width:190px;height:auto;' src='data:image/jpeg;base64,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' />
+</td>
+  <td style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:68%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:17px;font-style:normal;font-weight:bold;'>
+Giriş Formu (&Uuml;zerinde İşlem Yapılacak M&uuml;şteri &Uuml;r&uuml;n&uuml;)</span>
+</p>
+</td>
+</tr>
+</table>
+
+<table class='styled-table' style='border-spacing:0;border-collapse:collapse;border:1px solid black; width:100%;'>
+  <tr>
+  <td style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:66%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+Kuruluş:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+Mesa</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+Metal</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+İşleme</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ve</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+Boyama</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+San.</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+Ltd.</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+Şti.</span>
+</p>
+</td>
+  <td style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:34%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+Dok&uuml;man</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+Nr.:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+&Uuml;G GK OD 80</span>
+</p>
+</td>
+</tr>
+  <tr>
+  <td style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:66%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+B&ouml;l&uuml;m:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+İ&ccedil;erik-Ek Etiket</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+, M&Uuml; Giriş#:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+24070041</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+, Yazdırma:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+02.02.2025</span>
+</p>
+</td>
+  <td style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:34%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+S&uuml;r&uuml;m</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+Nr.:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+7</span>
+</p>
+</td>
+</tr>
+</table>
+
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <br/>
+</p>
+
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:14px;font-style:normal;font-weight:bold;'>
+ETİKET</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:14px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+[</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+S&Uuml;RE&Ccedil;</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+AKIŞI:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+&Uuml;G</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+DS</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+AŞ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+1</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+-</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+DEPOLAMA</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+SEVKİYAT</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+S&Uuml;RECİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+AKIŞI</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+-</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+MADDE</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+1.1:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+M&Uuml;ŞTERİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+&Uuml;R&Uuml;NLERİN</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+İSTİFLENMESİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+VE</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+TAŞINMASI</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+]</span>
+</p>
+
+<table class='styled-table' style='border-spacing:0;border-collapse:collapse;border:1px solid black; width:100%;'>
+  <tr>
+  <td rowspan='3' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:25%;height:60px;'>
+<img style='display:block;max-width:100%;width:60px;height:auto;' src='data:image/jpeg;base64,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' />
+</td>
+  <td colspan='3' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:75%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+M&uuml;şteri Adı:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+COMPANY_NAME</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TOPLU</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TAŞIMA</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+SİSTEMLERİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TEKNİK</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+&Ccedil;&Ouml;Z&Uuml;MLERİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+SAN.</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+VE</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TİC.A.Ş.</span>
+</p>
+</td>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+</tr>
+  <tr>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+  <td colspan='3' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:75%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+2M&uuml;şteriden Gelen &Uuml;r&uuml;n&uuml;n Kodu ve S&uuml;r&uuml;m&uuml;</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+10.G001.054</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+PRODUCT_NR &Ccedil;ER&Ccedil;EVE &Ccedil;ITASI 2370 MM</span>
+</p>
+</td>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+</tr>
+  <tr>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+  <td style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:25%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+M&Uuml; Giriş#</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+24070041</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+-</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+160<sub>.0</sub></span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+{Adet}</span>
+</p>
+</td>
+  <td colspan='2' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:50%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+Proje Ek Şartları</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+</p>
+</td>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+</tr>
+</table>
+
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <br/>
+</p>
+
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:14px;font-style:normal;font-weight:bold;'>
+ETİKET</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:14px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+[</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+S&Uuml;RE&Ccedil;</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+AKIŞI:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+&Uuml;G</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+DS</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+AŞ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+1</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+-</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+DEPOLAMA</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+SEVKİYAT</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+S&Uuml;RECİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+AKIŞI</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+-</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+MADDE</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+1.1:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+M&Uuml;ŞTERİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+&Uuml;R&Uuml;NLERİN</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+İSTİFLENMESİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+VE</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+TAŞINMASI</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+]</span>
+</p>
+
+<table class='styled-table' style='border-spacing:0;border-collapse:collapse;border:1px solid black; width:100%;'>
+  <tr>
+  <td rowspan='3' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:25%;height:60px;'>
+<img style='display:block;max-width:100%;width:60px;height:auto;' src='data:image/jpeg;base64,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' />
+</td>
+  <td colspan='3' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:75%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+M&uuml;şteri Adı:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+COMPANY_NAME</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TOPLU</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TAŞIMA</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+SİSTEMLERİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TEKNİK</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+&Ccedil;&Ouml;Z&Uuml;MLERİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+SAN.</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+VE</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TİC.A.Ş.</span>
+</p>
+</td>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+</tr>
+  <tr>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+  <td colspan='3' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:75%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+2M&uuml;şteriden Gelen &Uuml;r&uuml;n&uuml;n Kodu ve S&uuml;r&uuml;m&uuml;</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+10.G001.054</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+PRODUCT_NR &Ccedil;ER&Ccedil;EVE &Ccedil;ITASI 2370 MM</span>
+</p>
+</td>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+</tr>
+  <tr>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+  <td style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:25%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+M&Uuml; Giriş#</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+24070041</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+-</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+160<sub>.0</sub></span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+{Adet}</span>
+</p>
+</td>
+  <td colspan='2' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:50%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+Proje Ek Şartları</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+</p>
+</td>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+</tr>
+</table>
+
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <br/>
+</p>
+
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:14px;font-style:normal;font-weight:bold;'>
+ETİKET</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:14px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+[</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+S&Uuml;RE&Ccedil;</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+AKIŞI:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+&Uuml;G</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+DS</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+AŞ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+1</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+-</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+DEPOLAMA</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+SEVKİYAT</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+S&Uuml;RECİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+AKIŞI</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+-</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+MADDE</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+1.1:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+M&Uuml;ŞTERİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+&Uuml;R&Uuml;NLERİN</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+İSTİFLENMESİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+VE</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+TAŞINMASI</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+]</span>
+</p>
+
+<table class='styled-table' style='border-spacing:0;border-collapse:collapse;border:1px solid black; width:100%;'>
+  <tr>
+  <td rowspan='3' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:25%;height:60px;'>
+<img style='display:block;max-width:100%;width:60px;height:auto;' src='data:image/jpeg;base64,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' />
+</td>
+  <td colspan='3' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:75%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+M&uuml;şteri Adı:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+COMPANY_NAME</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TOPLU</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TAŞIMA</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+SİSTEMLERİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TEKNİK</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+&Ccedil;&Ouml;Z&Uuml;MLERİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+SAN.</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+VE</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TİC.A.Ş.</span>
+</p>
+</td>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+</tr>
+  <tr>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+  <td colspan='3' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:75%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+2M&uuml;şteriden Gelen &Uuml;r&uuml;n&uuml;n Kodu ve S&uuml;r&uuml;m&uuml;</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+10.G001.054</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+PRODUCT_NR &Ccedil;ER&Ccedil;EVE &Ccedil;ITASI 2370 MM</span>
+</p>
+</td>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+</tr>
+  <tr>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+  <td style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:25%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+M&Uuml; Giriş#</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+24070041</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+-</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+160<sub>.0</sub></span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+{Adet}</span>
+</p>
+</td>
+  <td colspan='2' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:50%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+Proje Ek Şartları</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+</p>
+</td>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+</tr>
+</table>
+
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <br/>
+</p>
+
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:14px;font-style:normal;font-weight:bold;'>
+ETİKET</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:14px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+[</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+S&Uuml;RE&Ccedil;</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+AKIŞI:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+&Uuml;G</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+DS</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+AŞ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+1</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+-</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+DEPOLAMA</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+SEVKİYAT</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+S&Uuml;RECİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+AKIŞI</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+-</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+MADDE</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+1.1:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+M&Uuml;ŞTERİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+&Uuml;R&Uuml;NLERİN</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+İSTİFLENMESİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+VE</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+TAŞINMASI</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+]</span>
+</p>
+
+<table class='styled-table' style='border-spacing:0;border-collapse:collapse;border:1px solid black; width:100%;'>
+  <tr>
+  <td rowspan='3' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:25%;height:60px;'>
+<img style='display:block;max-width:100%;width:60px;height:auto;' src='data:image/jpeg;base64,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' />
+</td>
+  <td colspan='3' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:75%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+M&uuml;şteri Adı:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+COMPANY_NAME</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TOPLU</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TAŞIMA</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+SİSTEMLERİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TEKNİK</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+&Ccedil;&Ouml;Z&Uuml;MLERİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+SAN.</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+VE</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TİC.A.Ş.</span>
+</p>
+</td>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+</tr>
+  <tr>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+  <td colspan='3' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:75%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+2M&uuml;şteriden Gelen &Uuml;r&uuml;n&uuml;n Kodu ve S&uuml;r&uuml;m&uuml;</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+10.G001.054</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+PRODUCT_NR &Ccedil;ER&Ccedil;EVE &Ccedil;ITASI 2370 MM</span>
+</p>
+</td>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+</tr>
+  <tr>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+  <td style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:25%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+M&Uuml; Giriş#</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+24070041</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+-</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+160<sub>.0</sub></span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+{Adet}</span>
+</p>
+</td>
+  <td colspan='2' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:50%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+Proje Ek Şartları</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+</p>
+</td>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+</tr>
+</table>
+
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <br/>
+</p>
+
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:14px;font-style:normal;font-weight:bold;'>
+ETİKET</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:14px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+[</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+S&Uuml;RE&Ccedil;</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+AKIŞI:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+&Uuml;G</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+DS</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+AŞ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+1</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+-</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+DEPOLAMA</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+SEVKİYAT</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+S&Uuml;RECİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+AKIŞI</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+-</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+MADDE</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+1.1:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+M&Uuml;ŞTERİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+&Uuml;R&Uuml;NLERİN</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+İSTİFLENMESİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+VE</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+TAŞINMASI</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+]</span>
+</p>
+
+<table class='styled-table' style='border-spacing:0;border-collapse:collapse;border:1px solid black; width:100%;'>
+  <tr>
+  <td rowspan='3' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:25%;height:60px;'>
+<img style='display:block;max-width:100%;width:60px;height:auto;' src='data:image/jpeg;base64,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' />
+</td>
+  <td colspan='3' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:75%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+M&uuml;şteri Adı:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+COMPANY_NAME</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TOPLU</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TAŞIMA</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+SİSTEMLERİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TEKNİK</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+&Ccedil;&Ouml;Z&Uuml;MLERİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+SAN.</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+VE</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TİC.A.Ş.</span>
+</p>
+</td>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+</tr>
+  <tr>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+  <td colspan='3' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:75%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+2M&uuml;şteriden Gelen &Uuml;r&uuml;n&uuml;n Kodu ve S&uuml;r&uuml;m&uuml;</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+10.G001.054</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+PRODUCT_NR &Ccedil;ER&Ccedil;EVE &Ccedil;ITASI 2370 MM</span>
+</p>
+</td>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+</tr>
+  <tr>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+  <td style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:25%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+M&Uuml; Giriş#</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+24070041</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+-</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+160<sub>.0</sub></span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+{Adet}</span>
+</p>
+</td>
+  <td colspan='2' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:50%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+Proje Ek Şartları</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+</p>
+</td>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+</tr>
+</table>
+
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <br/>
+</p>
+
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:14px;font-style:normal;font-weight:bold;'>
+ETİKET</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:14px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+[</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+S&Uuml;RE&Ccedil;</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+AKIŞI:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+&Uuml;G</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+DS</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+AŞ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+1</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+-</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+DEPOLAMA</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+SEVKİYAT</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+S&Uuml;RECİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+AKIŞI</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+-</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+MADDE</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+1.1:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+M&Uuml;ŞTERİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+&Uuml;R&Uuml;NLERİN</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+İSTİFLENMESİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+VE</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+TAŞINMASI</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+]</span>
+</p>
+
+<table class='styled-table' style='border-spacing:0;border-collapse:collapse;border:1px solid black; width:100%;'>
+  <tr>
+  <td rowspan='3' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:25%;height:60px;'>
+<img style='display:block;max-width:100%;width:60px;height:auto;' src='data:image/jpeg;base64,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' />
+</td>
+  <td colspan='3' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:75%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+M&uuml;şteri Adı:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+COMPANY_NAME</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TOPLU</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TAŞIMA</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+SİSTEMLERİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TEKNİK</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+&Ccedil;&Ouml;Z&Uuml;MLERİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+SAN.</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+VE</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TİC.A.Ş.</span>
+</p>
+</td>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+</tr>
+  <tr>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+  <td colspan='3' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:75%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+2M&uuml;şteriden Gelen &Uuml;r&uuml;n&uuml;n Kodu ve S&uuml;r&uuml;m&uuml;</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+10.G001.054</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+PRODUCT_NR &Ccedil;ER&Ccedil;EVE &Ccedil;ITASI 2370 MM</span>
+</p>
+</td>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+</tr>
+  <tr>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+  <td style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:25%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+M&Uuml; Giriş#</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+24070041</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+-</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+160<sub>.0</sub></span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+{Adet}</span>
+</p>
+</td>
+  <td colspan='2' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:50%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+Proje Ek Şartları</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+</p>
+</td>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+</tr>
+</table>
+
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <br/>
+</p>
+
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:14px;font-style:normal;font-weight:bold;'>
+ETİKET</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:14px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+[</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+S&Uuml;RE&Ccedil;</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+AKIŞI:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+&Uuml;G</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+DS</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+AŞ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+1</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+-</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+DEPOLAMA</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+SEVKİYAT</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+S&Uuml;RECİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+AKIŞI</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+-</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+MADDE</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+1.1:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+M&Uuml;ŞTERİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+&Uuml;R&Uuml;NLERİN</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+İSTİFLENMESİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+VE</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+TAŞINMASI</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+]</span>
+</p>
+
+<table class='styled-table' style='border-spacing:0;border-collapse:collapse;border:1px solid black; width:100%;'>
+  <tr>
+  <td rowspan='3' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:25%;height:60px;'>
+<img style='display:block;max-width:100%;width:60px;height:auto;' src='data:image/jpeg;base64,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' />
+</td>
+  <td colspan='3' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:75%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+M&uuml;şteri Adı:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+COMPANY_NAME</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TOPLU</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TAŞIMA</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+SİSTEMLERİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TEKNİK</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+&Ccedil;&Ouml;Z&Uuml;MLERİ</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+SAN.</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+VE</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+TİC.A.Ş.</span>
+</p>
+</td>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+</tr>
+  <tr>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+  <td colspan='3' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:75%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+2M&uuml;şteriden Gelen &Uuml;r&uuml;n&uuml;n Kodu ve S&uuml;r&uuml;m&uuml;</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+10.G001.054</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+PRODUCT_NR &Ccedil;ER&Ccedil;EVE &Ccedil;ITASI 2370 MM</span>
+</p>
+</td>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+</tr>
+  <tr>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+  <td style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:25%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+M&Uuml; Giriş#</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+24070041</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+-</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+160<sub>.0</sub></span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+ </span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:normal;'>
+{Adet}</span>
+</p>
+</td>
+  <td colspan='2' style='overflow-wrap:normal;word-wrap:break-word;vertical-align:top;border:1px solid black;width:50%;height:20px;'>
+<p style='padding:0px; margin:0px;text-align:left;'>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+Proje Ek Şartları</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+:</span>
+  <span style='font-family:fontText, Arial Unicode MS, Arial,Helvetica,sans-serif;color:var(--colorTextPrimary);font-size:12px;font-style:normal;font-weight:bold;'>
+ </span>
+</p>
+</td>
+   <! -- TGS_FileHtmlTableRowCellOccupied -->
+</tr>
+</table>
+
+</div>
+</body>
+</html>
