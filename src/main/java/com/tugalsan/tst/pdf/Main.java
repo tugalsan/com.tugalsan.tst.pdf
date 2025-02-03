@@ -6,7 +6,6 @@ import com.tugalsan.api.file.server.TS_FileUtils;
 import com.tugalsan.api.log.server.TS_Log;
 import com.tugalsan.api.sql.conn.server.TS_SQLConnAnchorUtils;
 import com.tugalsan.api.unsafe.client.TGS_UnSafe;
-import static java.lang.System.out;
 import java.nio.file.Path;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
