@@ -33,10 +33,13 @@ public class Main {
         TS_FilePdfOpenPdfUtilsHtml.toPdf(pathDstPdf, pathDstPdf);
         d.cr("test_openpdf_htm_to_pdf", "see", pathDstPdf);
     }
+
     private static void test_pdfbox3_htm_to_pdf() {
+        var pathFont = Path.of("C:\\dat\\dat\\pub\\font\\Code2000-rdLO.ttf");
+        var strFontName = "Code2000";
         var pathSrcHtm = Path.of("C:\\git\\tst\\com.tugalsan.tst.pdf\\a.htm");
         var pathDstPdf = pathSrcHtm.resolveSibling(TS_FileUtils.getNameLabel(pathSrcHtm) + ".pdf");
-        var u = TS_FilePdfBox3UtilsHtml.toPdf(pathSrcHtm, pathDstPdf);
+        var u = TS_FilePdfBox3UtilsHtml.toPdf(pathSrcHtm, pathDstPdf, pathFont, strFontName);
         if (u.isExcuse()) {
             TGS_UnSafe.thrw(u.excuse());
         }
