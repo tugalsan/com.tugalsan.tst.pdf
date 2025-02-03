@@ -1,16 +1,17 @@
 package com.tugalsan.tst.pdf;
- 
+
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsHtml;
-import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsSignVerify;
+import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsSign;
 import com.tugalsan.api.file.server.TS_FileUtils;
 import com.tugalsan.api.log.server.TS_Log;
 import com.tugalsan.api.sql.conn.server.TS_SQLConnAnchorUtils;
 import com.tugalsan.api.unsafe.client.TGS_UnSafe;
+import static java.lang.System.out;
 import java.nio.file.Path;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;  
-import org.apache.pdfbox.pdmodel.common.PDRectangle;  
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import static org.apache.pdfbox.pdmodel.font.Standard14Fonts.FontName.HELVETICA_BOLD;
 
@@ -39,7 +40,9 @@ public class Main {
     private static void test_pdfbox3_sign_validate() {
         TGS_UnSafe.run(() -> {
             var path = Path.of("C:\\dat\\dat\\pub\\drp\\ALKOR\\2022\\234\\234_HelloImage.pdf");
-            TS_FilePdfBox3UtilsSignVerify.verify_print(null, path);
+            TS_FilePdfBox3UtilsSign.verify(null, path).forEach(item -> {
+                out.println(item);
+            });
         });
     }
 
