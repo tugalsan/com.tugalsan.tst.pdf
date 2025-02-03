@@ -1,25 +1,29 @@
 package com.tugalsan.tst.pdf;
-
+ 
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsHtml;
+import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsSignVerify;
 import com.tugalsan.api.file.server.TS_FileUtils;
 import com.tugalsan.api.log.server.TS_Log;
+import com.tugalsan.api.sql.conn.server.TS_SQLConnAnchorUtils;
 import com.tugalsan.api.unsafe.client.TGS_UnSafe;
 import java.nio.file.Path;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;  
+import org.apache.pdfbox.pdmodel.common.PDRectangle;  
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import static org.apache.pdfbox.pdmodel.font.Standard14Fonts.FontName.HELVETICA_BOLD;
 
 public class Main {
 
     final private static TS_Log d = TS_Log.of(Main.class);
+    String pass = TS_SQLConnAnchorUtils.createAnchor(Path.of("c:\\dat\\sql\\cnn\\"), "autosqlweb").value().config.dbPassword;
 
     public static void main(String... args) {
         d.cr("main", "begin");
-        test_pdfbox3_boxable();
-        test_pdfbox3_htm_to_pdf();
+        test_pdfbox3_sign_validate();
+//        test_pdfbox3_boxable();
+//        test_pdfbox3_htm_to_pdf();
 //        test_openpdf_htm_to_pdf();
 //        test_pdfbox3_pdf_to_html();
 //        test_pdfbox3_sign_internally_simplfied();
@@ -30,6 +34,13 @@ public class Main {
 //        test_openpdf_img_to_pdf();
 //        test_pdfbox3_sign_externally();
         d.cr("main", "end");
+    }
+
+    private static void test_pdfbox3_sign_validate() {
+        TGS_UnSafe.run(() -> {
+            var path = Path.of("C:\\dat\\dat\\pub\\drp\\ALKOR\\2022\\234\\234_HelloImage.pdf");
+            TS_FilePdfBox3UtilsSignVerify.verify_print(null, path);
+        });
     }
 
     //https://github.com/dhorions/boxable/wiki
@@ -184,6 +195,7 @@ public class Main {
 //    private static void test_pdfbox3_combine() {
 //        var pdfBase = Path.of("C:\\Users\\me\\Desktop\\PDF");
 //        var pdfDest = pdfBase.resolve("text.pdf");
+
 
 ////        TS_FileUtils.deleteFileIfExists(pdfDest);
 //        TS_FilePdfBox3UtilsText.createPageText(pdfDest, "ali gel 1 ali gel 2 ali gel 3  ali gel 4 ali gel 5 ali gel 6 ali gel 7 ali gel 8 ali gel 9 ali gel 10 ali gel 11 ali gel 12");

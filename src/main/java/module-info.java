@@ -3,6 +3,8 @@ module com.tugalsan.tst.pdf {
     requires java.desktop;
     requires boxable;
     requires org.apache.pdfbox;
+    requires pdfbox.examples;
+    requires com.tugalsan.api.sql.conn;
 //    requires org.apache.pdfbox;
 //    requires org.bouncycastle.provider;
 //    requires org.bouncycastle.pkix;
