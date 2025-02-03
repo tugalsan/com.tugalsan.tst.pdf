@@ -6,7 +6,6 @@ import com.tugalsan.api.file.server.TS_DirectoryUtils;
 import com.tugalsan.api.file.server.TS_FileUtils;
 import com.tugalsan.api.log.server.TS_Log;
 import com.tugalsan.api.unsafe.client.TGS_UnSafe;
-import com.tugalsan.api.url.client.TGS_Url;
 import java.nio.file.Path;
 
 public class Main {
@@ -36,12 +35,12 @@ public class Main {
     }
 
     private static void test_pdfbox3_htm_to_pdf() {
-        var pathFont = Path.of("C:\\dat\\dat\\pub\\font\\Code2000-rdLO.ttf");
+        var pathFont = Path.of("C:\\dat\\dat\\pub\\font\\Code2000-rdLO.ttf").getParent();
         var strFontName = "Code2000";
         var pathSrcHtm = Path.of("C:\\git\\tst\\com.tugalsan.tst.pdf\\a.htm");
         var pathDstPdf = pathSrcHtm.resolveSibling(TS_FileUtils.getNameLabel(pathSrcHtm) + ".pdf");
         //var urlSrcHtm = TGS_Url.of("http://wikipedia.com");
-        var u = TS_FilePdfBox3UtilsHtml.toPdf(pathSrcHtm, pathDstPdf, pathFont, strFontName);
+        var u = TS_FilePdfBox3UtilsHtml.toPdf(pathSrcHtm, pathDstPdf, pathFont);
         //var u = TS_FilePdfBox3UtilsHtml.toPdf(urlSrcHtm, pathDstPdf, pathFont, strFontName);
         if (u.isExcuse()) {
             TGS_UnSafe.thrw(u.excuse());
