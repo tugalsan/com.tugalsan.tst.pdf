@@ -1,12 +1,16 @@
 package com.tugalsan.tst.pdf;
 
-import com.tugalsan.api.file.pdf.openpdf.server.TS_FilePdfOpenPdfUtilsHtml;
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsHtml;
-import com.tugalsan.api.file.server.TS_DirectoryUtils;
 import com.tugalsan.api.file.server.TS_FileUtils;
 import com.tugalsan.api.log.server.TS_Log;
 import com.tugalsan.api.unsafe.client.TGS_UnSafe;
 import java.nio.file.Path;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import static org.apache.pdfbox.pdmodel.font.Standard14Fonts.FontName.HELVETICA_BOLD;
 
 public class Main {
 
@@ -14,8 +18,9 @@ public class Main {
 
     public static void main(String... args) {
         d.cr("main", "begin");
-//        test_openpdf_htm_to_pdf();
+        test_pdfbox3_boxable();
         test_pdfbox3_htm_to_pdf();
+//        test_openpdf_htm_to_pdf();
 //        test_pdfbox3_pdf_to_html();
 //        test_pdfbox3_sign_internally_simplfied();
 //        test_pdfbox3_sign_internally();
@@ -27,11 +32,33 @@ public class Main {
         d.cr("main", "end");
     }
 
-    private static void test_openpdf_htm_to_pdf() {
-        var pathSrcHtm = Path.of("C:\\git\\tst\\com.tugalsan.tst.pdf\\a.htm");
-        var pathDstPdf = pathSrcHtm.resolveSibling(TS_FileUtils.getNameLabel(pathSrcHtm) + ".pdf");
-        TS_FilePdfOpenPdfUtilsHtml.toPdf(pathDstPdf, pathDstPdf);
-        d.cr("test_openpdf_htm_to_pdf", "see", pathDstPdf);
+    //https://github.com/dhorions/boxable/wiki
+    private static void test_pdfbox3_boxable() {
+        TGS_UnSafe.run(() -> {
+            var font = new PDType1Font(HELVETICA_BOLD);
+            var doc = new PDDocument();
+            var page = new PDPage(PDRectangle.A4);
+            var cos = new PDPageContentStream(doc, page);
+
+            {//Text (outside of the table)
+                cos.beginText();
+                cos.setFont(font, 22);
+                cos.newLineAtOffset(50, 700);
+                cos.showText("Document title");
+                cos.endText();
+            }
+
+            {//draw page title
+                var leftMargin = 50f;
+                var marginBetweenYElements = 10f;
+                var titleFontSize = 18f;
+                var yPosition = 100f;
+                // draw document title first
+//                PDStreamUtils.write(cos, "Document title", font, titleFontSize, leftMargin, yPosition, Color.BLACK);
+                // drop Y position with default margin between vertical elements
+                yPosition -= marginBetweenYElements;
+            }
+        });
     }
 
     private static void test_pdfbox3_htm_to_pdf() {
@@ -47,19 +74,26 @@ public class Main {
         }
         d.cr("test_pdfbox3_htm_to_pdf", "see", pathDstPdf);
     }
-
-    private static void test_pdfbox3_pdf_to_html() {
-        d.cr("test_pdfbox3_pdf_to_html", "begin");
-        var pathMainDir = Path.of("C:\\git\\tst\\com.tugalsan.tst.pdf");
-        TS_DirectoryUtils.subFiles(pathMainDir, "*.pdf", true, true).parallelStream().forEach(srcPDF -> {
-            d.cr("test_pdfbox3_pdf_to_html", srcPDF, "begin");
-            var dstHTM = srcPDF.resolveSibling(TS_FileUtils.getNameLabel(srcPDF) + ".htm");
-            TS_FilePdfBox3UtilsHtml.toHtml(srcPDF, dstHTM);
-            d.cr("test_pdfbox3_pdf_to_html", srcPDF, "end");
-        });
-        d.cr("test_pdfbox3_pdf_to_html", "end");
-    }
-
+//    
+//    private static void test_openpdf_htm_to_pdf() {
+//        var pathSrcHtm = Path.of("C:\\git\\tst\\com.tugalsan.tst.pdf\\a.htm");
+//        var pathDstPdf = pathSrcHtm.resolveSibling(TS_FileUtils.getNameLabel(pathSrcHtm) + ".pdf");
+//        TS_FilePdfOpenPdfUtilsHtml.toPdf(pathDstPdf, pathDstPdf);
+//        d.cr("test_openpdf_htm_to_pdf", "see", pathDstPdf);
+//    }
+//
+//
+//    private static void test_pdfbox3_pdf_to_html() {
+//        d.cr("test_pdfbox3_pdf_to_html", "begin");
+//        var pathMainDir = Path.of("C:\\git\\tst\\com.tugalsan.tst.pdf");
+//        TS_DirectoryUtils.subFiles(pathMainDir, "*.pdf", true, true).parallelStream().forEach(srcPDF -> {
+//            d.cr("test_pdfbox3_pdf_to_html", srcPDF, "begin");
+//            var dstHTM = srcPDF.resolveSibling(TS_FileUtils.getNameLabel(srcPDF) + ".htm");
+//            TS_FilePdfBox3UtilsHtml.toHtml(srcPDF, dstHTM);
+//            d.cr("test_pdfbox3_pdf_to_html", srcPDF, "end");
+//        });
+//        d.cr("test_pdfbox3_pdf_to_html", "end");
+//    }
 //    private static void test_pdfbox3_sign_internally_simplfied() {
 //        try {
 //            //VARIABLES

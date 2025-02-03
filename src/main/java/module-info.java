@@ -1,6 +1,8 @@
 module com.tugalsan.tst.pdf {
 //    requires gwt.user;
     requires java.desktop;
+    requires boxable;
+    requires org.apache.pdfbox;
 //    requires org.apache.pdfbox;
 //    requires org.bouncycastle.provider;
 //    requires org.bouncycastle.pkix;
