@@ -11,6 +11,7 @@ module com.tugalsan.tst.pdf {
 //    requires org.apache.commons.logging;
 //    requires org.bouncycastle.util;
     requires com.tugalsan.api.log;
+    requires com.tugalsan.api.function;
     requires com.tugalsan.api.file;
     requires com.tugalsan.api.url;
     requires com.tugalsan.api.unsafe;

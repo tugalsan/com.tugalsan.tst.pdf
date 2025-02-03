@@ -39,9 +39,7 @@ public class Main {
     private static void test_pdfbox3_sign_validate() {
         TGS_UnSafe.run(() -> {
             var path = Path.of("C:\\dat\\dat\\pub\\drp\\ALKOR\\2022\\234\\234_HelloImage.pdf");
-            TS_FilePdfBox3UtilsSign.verify(null, path).forEach(item -> {
-                d.cr("test_pdfbox3_sign_validate", item);
-            });
+            TS_FilePdfBox3UtilsSign.verify(log -> d.cr("test_pdfbox3_sign_validate", log), null, path);
         });
     }
 
