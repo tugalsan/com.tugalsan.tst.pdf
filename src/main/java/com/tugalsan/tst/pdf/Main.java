@@ -50,7 +50,7 @@ public class Main {
                 cos.setFont(font, 22);
                 cos.newLineAtOffset(50, 700);
                 cos.showText("Document title");
-                cos.endText();
+                cos.endText(); 
             }
 
             {//draw page title
