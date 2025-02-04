@@ -23,21 +23,21 @@ public class Main {
     public static void main(String... args) {
         d.cr("main", "begin");
 //        test_pdfbox3_boxable();
-        test_pdfbox3_sign_validate(); 
+        test_pdfbox3_sign_validate();
 //        test_pdfbox3_htm_to_pdf();
 //        test_openpdf_htm_to_pdf();
 //        test_pdfbox3_pdf_to_html();
-//        test_pdfbox3_sign_internally_simplfied();
+//        test_pdfbox3_sign_internally_simplfied(); 
 //        test_pdfbox3_sign_internally();
-//        test_pdfbox3_sign();
-//        test_pdfbox3_combine();
+//        test_pdfbox3_sign();  
+//        test_pdfbox3_combine();  
 //        test_pdfbox3_toJpg();
-//        test_openpdf_img_to_pdf();
-//        test_pdfbox3_sign_externally();
+//        test_openpdf_img_to_pdf();  
+//        test_pdfbox3_sign_externally();  
         d.cr("main", "end");
     }
 
-    //https://github.com/dhorions/boxable/wiki
+    //https://github.com/dhorions/boxable/wiki  
     private static void test_pdfbox3_boxable() {
         TGS_UnSafe.run(() -> {
             var font = new PDType1Font(HELVETICA_BOLD);
@@ -67,11 +67,13 @@ public class Main {
     }
 
     private static void test_pdfbox3_sign_validate() {
-        TGS_UnSafe.run(() -> {
-            var path = Path.of("C:\\dat\\dat\\pub\\drp\\ALKOR\\2022\\234\\234_HelloImage.pdf");
-            var result = TS_FilePdfBox3UtilsSign.verify(log -> d.cr("test_pdfbox3_sign_validate", log), null, path);
-            out.println(result);
-        });
+        var path = Path.of("C:\\dat\\dat\\pub\\drp\\ALKOR\\2022\\234\\234_HelloImage.pdf");
+        var result = TS_FilePdfBox3UtilsSign.verify(log -> d.cr("test_pdfbox3_sign_validate", log), null, path);
+        if (result.isExcuse()) {
+            d.ct("test_pdfbox3_sign_validate", result.excuse());
+            return;
+        }
+        out.println(result.value());
     }
 
     private static void test_pdfbox3_htm_to_pdf() {
