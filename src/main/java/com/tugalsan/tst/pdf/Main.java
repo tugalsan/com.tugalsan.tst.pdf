@@ -6,6 +6,7 @@ import com.tugalsan.api.file.server.TS_FileUtils;
 import com.tugalsan.api.log.server.TS_Log;
 import com.tugalsan.api.sql.conn.server.TS_SQLConnAnchorUtils;
 import com.tugalsan.api.unsafe.client.TGS_UnSafe;
+import static java.lang.System.out;
 import java.nio.file.Path;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -21,8 +22,8 @@ public class Main {
 
     public static void main(String... args) {
         d.cr("main", "begin");
-        test_pdfbox3_sign_validate();
 //        test_pdfbox3_boxable();
+        test_pdfbox3_sign_validate();
 //        test_pdfbox3_htm_to_pdf();
 //        test_openpdf_htm_to_pdf();
 //        test_pdfbox3_pdf_to_html();
@@ -34,13 +35,6 @@ public class Main {
 //        test_openpdf_img_to_pdf();
 //        test_pdfbox3_sign_externally();
         d.cr("main", "end");
-    }
-
-    private static void test_pdfbox3_sign_validate() {
-        TGS_UnSafe.run(() -> {
-            var path = Path.of("C:\\dat\\dat\\pub\\drp\\ALKOR\\2022\\234\\234_HelloImage.pdf");
-            TS_FilePdfBox3UtilsSign.verify(log -> d.cr("test_pdfbox3_sign_validate", log), null, path);
-        });
     }
 
     //https://github.com/dhorions/boxable/wiki
@@ -69,6 +63,14 @@ public class Main {
                 // drop Y position with default margin between vertical elements
                 yPosition -= marginBetweenYElements;
             }
+        });
+    }
+
+    private static void test_pdfbox3_sign_validate() {
+        TGS_UnSafe.run(() -> {
+            var path = Path.of("C:\\dat\\dat\\pub\\drp\\ALKOR\\2022\\234\\234_HelloImage.pdf");
+            var result = TS_FilePdfBox3UtilsSign.verify(log -> d.cr("test_pdfbox3_sign_validate", log), null, path);
+            out.println(result);
         });
     }
 
