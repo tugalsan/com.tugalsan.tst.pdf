@@ -23,7 +23,7 @@ public class Main {
     public static void main(String... args) {
         d.cr("main", "begin");
 //        test_pdfbox3_boxable();
-        test_pdfbox3_sign_validate();
+        test_pdfbox3_sign_validate(); 
 //        test_pdfbox3_htm_to_pdf();
 //        test_openpdf_htm_to_pdf();
 //        test_pdfbox3_pdf_to_html();
