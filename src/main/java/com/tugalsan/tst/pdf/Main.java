@@ -9,25 +9,12 @@ import com.tugalsan.api.file.server.TS_FileUtils;
 import com.tugalsan.api.log.server.TS_Log;
 import com.tugalsan.api.network.server.TS_NetworkSSLUtils;
 import com.tugalsan.api.sql.conn.server.TS_SQLConnAnchorUtils;
-import com.tugalsan.api.stream.client.TGS_StreamUtils;
-import com.tugalsan.api.union.client.TGS_UnionExcuse;
 import com.tugalsan.api.unsafe.client.TGS_UnSafe;
 import com.tugalsan.api.url.client.TGS_Url;
 import com.tugalsan.api.url.server.TS_UrlDownloadUtils;
-import java.io.IOException;
 import static java.lang.System.out;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.PrivateKey;
-import java.security.UnrecoverableKeyException;
-import java.security.cert.Certificate;
-import java.security.cert.CertificateException;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -58,8 +45,6 @@ public class Main {
 //        test_pdfbox3_sign_externally();  
         d.cr("main", "end");
     }
-
-    
 
     //https://github.com/dhorions/boxable/wiki  
     private static void test_pdfbox3_boxable() {
@@ -92,16 +77,16 @@ public class Main {
 
     private static void test_pdfbox3_sign_validate() {
         test_download_sslCert();
-        TS_NetworkSSLUtils.toCertificatesFromKeyStore(store, true)
-        var path = Path.of("C:\\dat\\dat\\pub\\drp\\ALKOR\\2022\\234\\234_HelloImage.pdf");
-        var result = TS_FilePdfBox3UtilsSign.verify(log -> d.cr("test_pdfbox3_sign_validate", log), null, path);
+        var trustedCerts = TS_NetworkSSLUtils.toCertificatesFromDirectory(pathP12.getParent(), pass);
+        var pathPdf = Path.of("C:\\dat\\dat\\pub\\drp\\ALKOR\\2022\\234\\234_HelloImage.pdf");
+        var result = TS_FilePdfBox3UtilsSign.verify(log -> d.cr("test_pdfbox3_sign_validate", log), null, pathPdf, trustedCerts);
         if (result.isExcuse()) {
             d.ct("test_pdfbox3_sign_validate", result.excuse());
-            return;
+            return; 
         }
         out.println(result.value());
     }
-    
+
     private static void test_download_sslCert() {
         var downloadTimeout = Duration.ofSeconds(60);
         var urlsCertAll = TS_FileHtmlUtils.parseLinks_usingRegex(
