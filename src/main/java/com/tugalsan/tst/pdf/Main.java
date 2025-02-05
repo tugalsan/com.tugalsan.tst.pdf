@@ -42,14 +42,7 @@ public class Main {
     final private static Path pathP12 = Path.of("C:\\dat\\ssl\\tomcat.p12");
     final private static String pass = TS_SQLConnAnchorUtils.createAnchor(Path.of("c:\\dat\\sql\\cnn\\"), "autosqlweb").value().config.dbPassword;
 
-   
     public static void main(String... args) {
-        var certificates = TS_NetworkSSLUtils.sniffFromToCertificatesP12(pathP12, pass, true);
-
-        if (true) {
-            return;
-        }
-
         d.cr("main", "begin");
 //        test_pdfbox3_boxable();
         test_pdfbox3_sign_validate();
@@ -66,26 +59,7 @@ public class Main {
         d.cr("main", "end");
     }
 
-    private static void test_download_sslCert() {
-        var downloadTimeout = Duration.ofSeconds(60);
-        var urlsCertAll = TS_FileHtmlUtils.parseLinks_usingRegex(
-                List.of(
-                        TGS_Url.of("https://letsencrypt.org/certificates/"),
-                        TGS_Url.of("https://www.freetsa.org/index_en.php")
-                ),
-                downloadTimeout, true, true,
-                u -> {
-                    return TGS_CharSetCast.current().endsWithIgnoreCase(u.toString(), "der")
-                    || TGS_CharSetCast.current().endsWithIgnoreCase(u.toString(), "pem")
-                    || TGS_CharSetCast.current().endsWithIgnoreCase(u.toString(), "crt");
-                }
-        );
-        d.cr("main", "urlsCertAll", "size", urlsCertAll.size());
-        var trusted = Path.of("C:\\dat\\ssl\\trusted");
-        d.cr("main", trusted, "fileCount.pre", TS_DirectoryUtils.subFiles(trusted, null, false, false).size());
-        TS_UrlDownloadUtils.toFolder(urlsCertAll, trusted, downloadTimeout);
-        d.cr("main", trusted, "fileCount.pst", TS_DirectoryUtils.subFiles(trusted, null, false, false).size());
-    }
+    
 
     //https://github.com/dhorions/boxable/wiki  
     private static void test_pdfbox3_boxable() {
@@ -117,6 +91,8 @@ public class Main {
     }
 
     private static void test_pdfbox3_sign_validate() {
+        test_download_sslCert();
+        TS_NetworkSSLUtils.toCertificatesFromKeyStore(store, true)
         var path = Path.of("C:\\dat\\dat\\pub\\drp\\ALKOR\\2022\\234\\234_HelloImage.pdf");
         var result = TS_FilePdfBox3UtilsSign.verify(log -> d.cr("test_pdfbox3_sign_validate", log), null, path);
         if (result.isExcuse()) {
@@ -124,6 +100,27 @@ public class Main {
             return;
         }
         out.println(result.value());
+    }
+    
+    private static void test_download_sslCert() {
+        var downloadTimeout = Duration.ofSeconds(60);
+        var urlsCertAll = TS_FileHtmlUtils.parseLinks_usingRegex(
+                List.of(
+                        TGS_Url.of("https://letsencrypt.org/certificates/"),
+                        TGS_Url.of("https://www.freetsa.org/index_en.php")
+                ),
+                downloadTimeout, true, true,
+                u -> {
+                    return TGS_CharSetCast.current().endsWithIgnoreCase(u.toString(), "der")
+                    || TGS_CharSetCast.current().endsWithIgnoreCase(u.toString(), "pem")
+                    || TGS_CharSetCast.current().endsWithIgnoreCase(u.toString(), "crt");
+                }
+        );
+        d.cr("main", "urlsCertAll", "size", urlsCertAll.size());
+        var trusted = Path.of("C:\\dat\\ssl\\trusted");
+        d.cr("main", trusted, "fileCount.pre", TS_DirectoryUtils.subFiles(trusted, null, false, false).size());
+        TS_UrlDownloadUtils.toFolder(urlsCertAll, trusted, downloadTimeout);
+        d.cr("main", trusted, "fileCount.pst", TS_DirectoryUtils.subFiles(trusted, null, false, false).size());
     }
 
     private static void test_pdfbox3_htm_to_pdf() {
