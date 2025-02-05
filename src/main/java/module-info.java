@@ -17,8 +17,10 @@ module com.tugalsan.tst.pdf {
     requires com.tugalsan.api.string;
     requires com.tugalsan.api.charset;
     requires com.tugalsan.api.url;
+    requires com.tugalsan.api.time;
     requires com.tugalsan.api.unsafe;
     requires com.tugalsan.api.union;
+    requires com.tugalsan.api.random;
     requires com.tugalsan.api.file.pdf.openpdf;
     requires com.tugalsan.api.file.pdf.pdfbox3;
 //    requires com.tugalsan.api.log;

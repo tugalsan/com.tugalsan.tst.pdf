@@ -4,12 +4,12 @@ import com.tugalsan.api.charset.client.TGS_CharSetCast;
 import com.tugalsan.api.file.html.server.TS_FileHtmlUtils;
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsHtml;
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsSign;
+import com.tugalsan.api.file.server.TS_DirectoryUtils;
 import com.tugalsan.api.file.server.TS_FileUtils;
 import com.tugalsan.api.log.server.TS_Log;
 import com.tugalsan.api.sql.conn.server.TS_SQLConnAnchorUtils;
 import com.tugalsan.api.unsafe.client.TGS_UnSafe;
 import com.tugalsan.api.url.client.TGS_Url;
-import com.tugalsan.api.url.client.parser.TGS_UrlParser;
 import com.tugalsan.api.url.server.TS_UrlDownloadUtils;
 import static java.lang.System.out;
 import java.nio.file.Path;
@@ -26,34 +26,30 @@ public class Main {
 
     final private static TS_Log d = TS_Log.of(Main.class);
     String pass = TS_SQLConnAnchorUtils.createAnchor(Path.of("c:\\dat\\sql\\cnn\\"), "autosqlweb").value().config.dbPassword;
- 
-    public static void main(String... args) { 
+
+    public static void main(String... args) {
+        var downloadTimeout = Duration.ofSeconds(60);
         var urlsCertAll = TS_FileHtmlUtils.parseLinks_usingRegex(
                 List.of(
                         TGS_Url.of("https://letsencrypt.org/certificates/"),
                         TGS_Url.of("https://www.freetsa.org/index_en.php")
                 ),
-                Duration.ofSeconds(60),
-                true,
-                true, 
-                u -> {  
+                downloadTimeout, true, true,
+                u -> {
                     return TGS_CharSetCast.current().endsWithIgnoreCase(u.toString(), "der")
                     || TGS_CharSetCast.current().endsWithIgnoreCase(u.toString(), "pem")
                     || TGS_CharSetCast.current().endsWithIgnoreCase(u.toString(), "crt");
-                }
-        );
+                } 
+        ); 
         d.cr("main", "urlsCertAll", "size", urlsCertAll.size());
-        urlsCertAll.forEach(url -> {
-            d.cr("main", "url", url);
-        });
+        var trusted = Path.of("C:\\dat\\ssl\\trusted");
+        d.cr("main", trusted, "fileCount.pre", TS_DirectoryUtils.subFiles(trusted, null, false, false).size());
+        TS_UrlDownloadUtils.toFolder(urlsCertAll, trusted, downloadTimeout); 
+        d.cr("main", trusted, "fileCount.pst", TS_DirectoryUtils.subFiles(trusted, null, false, false).size());
 
         if (true) {
             return;
         }
-
-        TS_UrlDownloadUtils.getTimeLastModified_withoutDownloading(TGS_Url.of(
-                "https://letsencrypt.org/certs/2024/e5.der"
-        ));
 
         d.cr("main", "begin");
 //        test_pdfbox3_boxable();
