@@ -7,13 +7,27 @@ import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsSign;
 import com.tugalsan.api.file.server.TS_DirectoryUtils;
 import com.tugalsan.api.file.server.TS_FileUtils;
 import com.tugalsan.api.log.server.TS_Log;
+import com.tugalsan.api.network.server.TS_NetworkSSLUtils;
 import com.tugalsan.api.sql.conn.server.TS_SQLConnAnchorUtils;
+import com.tugalsan.api.stream.client.TGS_StreamUtils;
+import com.tugalsan.api.union.client.TGS_UnionExcuse;
 import com.tugalsan.api.unsafe.client.TGS_UnSafe;
 import com.tugalsan.api.url.client.TGS_Url;
 import com.tugalsan.api.url.server.TS_UrlDownloadUtils;
+import java.io.IOException;
 import static java.lang.System.out;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
+import java.security.UnrecoverableKeyException;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateException;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -25,27 +39,12 @@ import static org.apache.pdfbox.pdmodel.font.Standard14Fonts.FontName.HELVETICA_
 public class Main {
 
     final private static TS_Log d = TS_Log.of(Main.class);
-    String pass = TS_SQLConnAnchorUtils.createAnchor(Path.of("c:\\dat\\sql\\cnn\\"), "autosqlweb").value().config.dbPassword;
+    final private static Path pathP12 = Path.of("C:\\dat\\ssl\\tomcat.p12");
+    final private static String pass = TS_SQLConnAnchorUtils.createAnchor(Path.of("c:\\dat\\sql\\cnn\\"), "autosqlweb").value().config.dbPassword;
 
+   
     public static void main(String... args) {
-        var downloadTimeout = Duration.ofSeconds(60);
-        var urlsCertAll = TS_FileHtmlUtils.parseLinks_usingRegex(
-                List.of(
-                        TGS_Url.of("https://letsencrypt.org/certificates/"),
-                        TGS_Url.of("https://www.freetsa.org/index_en.php")
-                ),
-                downloadTimeout, true, true,
-                u -> {
-                    return TGS_CharSetCast.current().endsWithIgnoreCase(u.toString(), "der")
-                    || TGS_CharSetCast.current().endsWithIgnoreCase(u.toString(), "pem")
-                    || TGS_CharSetCast.current().endsWithIgnoreCase(u.toString(), "crt");
-                } 
-        ); 
-        d.cr("main", "urlsCertAll", "size", urlsCertAll.size());
-        var trusted = Path.of("C:\\dat\\ssl\\trusted");
-        d.cr("main", trusted, "fileCount.pre", TS_DirectoryUtils.subFiles(trusted, null, false, false).size());
-        TS_UrlDownloadUtils.toFolder(urlsCertAll, trusted, downloadTimeout); 
-        d.cr("main", trusted, "fileCount.pst", TS_DirectoryUtils.subFiles(trusted, null, false, false).size());
+        var certificates = TS_NetworkSSLUtils.sniffFromToCertificatesP12(pathP12, pass, true);
 
         if (true) {
             return;
@@ -65,6 +64,27 @@ public class Main {
 //        test_openpdf_img_to_pdf();  
 //        test_pdfbox3_sign_externally();  
         d.cr("main", "end");
+    }
+
+    private static void test_download_sslCert() {
+        var downloadTimeout = Duration.ofSeconds(60);
+        var urlsCertAll = TS_FileHtmlUtils.parseLinks_usingRegex(
+                List.of(
+                        TGS_Url.of("https://letsencrypt.org/certificates/"),
+                        TGS_Url.of("https://www.freetsa.org/index_en.php")
+                ),
+                downloadTimeout, true, true,
+                u -> {
+                    return TGS_CharSetCast.current().endsWithIgnoreCase(u.toString(), "der")
+                    || TGS_CharSetCast.current().endsWithIgnoreCase(u.toString(), "pem")
+                    || TGS_CharSetCast.current().endsWithIgnoreCase(u.toString(), "crt");
+                }
+        );
+        d.cr("main", "urlsCertAll", "size", urlsCertAll.size());
+        var trusted = Path.of("C:\\dat\\ssl\\trusted");
+        d.cr("main", trusted, "fileCount.pre", TS_DirectoryUtils.subFiles(trusted, null, false, false).size());
+        TS_UrlDownloadUtils.toFolder(urlsCertAll, trusted, downloadTimeout);
+        d.cr("main", trusted, "fileCount.pst", TS_DirectoryUtils.subFiles(trusted, null, false, false).size());
     }
 
     //https://github.com/dhorions/boxable/wiki  
