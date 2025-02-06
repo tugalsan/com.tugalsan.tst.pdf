@@ -1,20 +1,15 @@
 package com.tugalsan.tst.pdf;
 
-import com.tugalsan.api.charset.client.TGS_CharSetCast;
-import com.tugalsan.api.file.html.server.TS_FileHtmlUtils;
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsHtml;
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsSign;
-import com.tugalsan.api.file.server.TS_DirectoryUtils;
 import com.tugalsan.api.file.server.TS_FileUtils;
+import com.tugalsan.api.function.client.TGS_Func_In1;
 import com.tugalsan.api.log.server.TS_Log;
-import com.tugalsan.api.network.server.TS_NetworkSSLUtils;
 import com.tugalsan.api.sql.conn.server.TS_SQLConnAnchorUtils;
+import com.tugalsan.api.string.client.TGS_StringUtils;
 import com.tugalsan.api.unsafe.client.TGS_UnSafe;
-import com.tugalsan.api.url.client.TGS_Url;
-import com.tugalsan.api.url.server.TS_UrlDownloadUtils;
 import static java.lang.System.out;
 import java.nio.file.Path;
-import java.time.Duration;
 import java.util.List;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -30,6 +25,51 @@ public class Main {
     final private static String pass = TS_SQLConnAnchorUtils.createAnchor(Path.of("c:\\dat\\sql\\cnn\\"), "autosqlweb").value().config.dbPassword;
 
     public static void main(String... args) {
+        String data = """
+                      - [2]: ObjectId: 1.3.6.1.5.5.7.1.1 Criticality=false
+                      - AuthorityInfoAccess [
+                      - [
+                      - accessMethod: ocsp
+                      - accessLocation: URIName: http://e5.o.lencr.org
+                      - ,
+                      - accessMethod: caIssuers
+                      - accessLocation: URIName: http://e5.i.lencr.org/
+                      - ]
+                      - ]
+                      - [3]: ObjectId: 2.5.29.35 Criticality=false
+                      - AuthorityKeyIdentifier [
+                      - KeyIdentifier [
+                      - 0000: 9F 2B 5F CF 3C 21 4F 9D 04 B7 ED 2B 2C C4 C6 70 .+_. - 0010: 8B D2 D7 0D ....
+                      - ]
+                      - ]
+                      - [4]: ObjectId: 2.5.29.19 Criticality=true
+                      - BasicConstraints:[
+                      - CA:false
+                      - PathLen: undefined
+                      - ]""".replace("- ", "");
+        TGS_Func_In1<List<String>> printLines = lines -> {
+            var indent = 1;
+            for (var line : lines) {
+                if (line.contains("[") && line.contains("]")) {
+                    out.println(" - ".repeat(indent) + line);
+                } else if (line.contains("[")) {
+                    out.println(" - ".repeat(indent) + line);
+                    indent++;
+                } else if (line.contains("]")) {
+                    indent--;
+                    out.println(" - ".repeat(indent) + line);
+                } else {
+                    out.println(" - ".repeat(indent) + line);
+                }
+                if (indent < 1) {
+                    indent = 1;
+                }
+            }
+        };
+        printLines.run(TGS_StringUtils.jre().toList_ln(data));
+        if (true) {
+            return;
+        }
         d.cr("main", "begin");
 //        test_pdfbox3_boxable();
         test_pdfbox3_sign_validate();
@@ -76,36 +116,16 @@ public class Main {
     }
 
     private static void test_pdfbox3_sign_validate() {
-        test_download_sslCert();
-        var trustedCerts = TS_NetworkSSLUtils.toCertificatesFromDirectory(pathP12.getParent(), pass);
+        var dirSSL = pathP12.getParent();
+        TS_FilePdfBox3UtilsSign.verify_preOperations_downloadTrustedCertificatesToDir(dirSSL);
+        var trustedCerts = TS_FilePdfBox3UtilsSign.verify_preOperations_fetchTrustedCertificatesFromDir(dirSSL, pass);
         var pathPdf = Path.of("C:\\dat\\dat\\pub\\drp\\ALKOR\\2022\\234\\234_HelloImage.pdf");
         var result = TS_FilePdfBox3UtilsSign.verify(log -> d.cr("test_pdfbox3_sign_validate", log), null, pathPdf, trustedCerts);
         if (result.isExcuse()) {
             d.ct("test_pdfbox3_sign_validate", result.excuse());
-            return; 
+            return;
         }
         out.println(result.value());
-    }
-
-    private static void test_download_sslCert() {
-        var downloadTimeout = Duration.ofSeconds(60);
-        var urlsCertAll = TS_FileHtmlUtils.parseLinks_usingRegex(
-                List.of(
-                        TGS_Url.of("https://letsencrypt.org/certificates/"),
-                        TGS_Url.of("https://www.freetsa.org/index_en.php")
-                ),
-                downloadTimeout, true, true,
-                u -> {
-                    return TGS_CharSetCast.current().endsWithIgnoreCase(u.toString(), "der")
-                    || TGS_CharSetCast.current().endsWithIgnoreCase(u.toString(), "pem")
-                    || TGS_CharSetCast.current().endsWithIgnoreCase(u.toString(), "crt");
-                }
-        );
-        d.cr("main", "urlsCertAll", "size", urlsCertAll.size());
-        var trusted = Path.of("C:\\dat\\ssl\\trusted");
-        d.cr("main", trusted, "fileCount.pre", TS_DirectoryUtils.subFiles(trusted, null, false, false).size());
-        TS_UrlDownloadUtils.toFolder(urlsCertAll, trusted, downloadTimeout);
-        d.cr("main", trusted, "fileCount.pst", TS_DirectoryUtils.subFiles(trusted, null, false, false).size());
     }
 
     private static void test_pdfbox3_htm_to_pdf() {
