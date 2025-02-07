@@ -1,22 +1,16 @@
 package com.tugalsan.tst.pdf;
 
-import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsHtml;
-import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsSign;
-import com.tugalsan.api.file.server.TS_FileUtils;
-import com.tugalsan.api.function.client.TGS_Func_In1;
+import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsFont;
 import com.tugalsan.api.log.server.TS_Log;
 import com.tugalsan.api.sql.conn.server.TS_SQLConnAnchorUtils;
-import com.tugalsan.api.string.client.TGS_StringUtils;
 import com.tugalsan.api.unsafe.client.TGS_UnSafe;
-import static java.lang.System.out;
 import java.nio.file.Path;
-import java.util.List;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
-import static org.apache.pdfbox.pdmodel.font.Standard14Fonts.FontName.HELVETICA_BOLD;
+import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
 
 public class Main {
 
@@ -25,54 +19,13 @@ public class Main {
     final private static String pass = TS_SQLConnAnchorUtils.createAnchor(Path.of("c:\\dat\\sql\\cnn\\"), "autosqlweb").value().config.dbPassword;
 
     public static void main(String... args) {
-        String data = """
-                      - [2]: ObjectId: 1.3.6.1.5.5.7.1.1 Criticality=false
-                      - AuthorityInfoAccess [
-                      - [
-                      - accessMethod: ocsp
-                      - accessLocation: URIName: http://e5.o.lencr.org
-                      - ,
-                      - accessMethod: caIssuers
-                      - accessLocation: URIName: http://e5.i.lencr.org/
-                      - ]
-                      - ]
-                      - [3]: ObjectId: 2.5.29.35 Criticality=false
-                      - AuthorityKeyIdentifier [
-                      - KeyIdentifier [
-                      - 0000: 9F 2B 5F CF 3C 21 4F 9D 04 B7 ED 2B 2C C4 C6 70 .+_. - 0010: 8B D2 D7 0D ....
-                      - ]
-                      - ]
-                      - [4]: ObjectId: 2.5.29.19 Criticality=true
-                      - BasicConstraints:[
-                      - CA:false
-                      - PathLen: undefined
-                      - ]""".replace("- ", "");
-        TGS_Func_In1<List<String>> printLines = lines -> {
-            var indent = 1;
-            for (var line : lines) {
-                if (line.contains("[") && line.contains("]")) {
-                    out.println(" - ".repeat(indent) + line);
-                } else if (line.contains("[")) {
-                    out.println(" - ".repeat(indent) + line);
-                    indent++;
-                } else if (line.contains("]")) {
-                    indent--;
-                    out.println(" - ".repeat(indent) + line);
-                } else {
-                    out.println(" - ".repeat(indent) + line);
-                }
-                if (indent < 1) {
-                    indent = 1;
-                }
-            }
-        };
-        printLines.run(TGS_StringUtils.jre().toList_ln(data));
+
         if (true) {
             return;
         }
         d.cr("main", "begin");
 //        test_pdfbox3_boxable();
-        test_pdfbox3_sign_validate();
+//        test_pdfbox3_sign_validate();
 //        test_pdfbox3_htm_to_pdf();
 //        test_openpdf_htm_to_pdf();
 //        test_pdfbox3_pdf_to_html();
@@ -89,7 +42,7 @@ public class Main {
     //https://github.com/dhorions/boxable/wiki  
     private static void test_pdfbox3_boxable() {
         TGS_UnSafe.run(() -> {
-            var font = new PDType1Font(HELVETICA_BOLD);
+            var font = TS_FilePdfBox3UtilsFont.of_COURIER();
             var doc = new PDDocument();
             var page = new PDPage(PDRectangle.A4);
             var cos = new PDPageContentStream(doc, page);
@@ -115,32 +68,77 @@ public class Main {
         });
     }
 
-    private static void test_pdfbox3_sign_validate() {
-        var dirSSL = pathP12.getParent();
-        TS_FilePdfBox3UtilsSign.verify_preOperations_downloadTrustedCertificatesToDir(dirSSL);
-        var trustedCerts = TS_FilePdfBox3UtilsSign.verify_preOperations_fetchTrustedCertificatesFromDir(dirSSL, pass);
-        var pathPdf = Path.of("C:\\dat\\dat\\pub\\drp\\ALKOR\\2022\\234\\234_HelloImage.pdf");
-        var result = TS_FilePdfBox3UtilsSign.verify(log -> d.cr("test_pdfbox3_sign_validate", log), null, pathPdf, trustedCerts);
-        if (result.isExcuse()) {
-            d.ct("test_pdfbox3_sign_validate", result.excuse());
-            return;
-        }
-        out.println(result.value());
-    }
-
-    private static void test_pdfbox3_htm_to_pdf() {
-        var pathFont = Path.of("C:\\dat\\dat\\pub\\font\\Code2000-rdLO.ttf").getParent();
-        var strFontName = "Code2000";
-        var pathSrcHtm = Path.of("C:\\git\\tst\\com.tugalsan.tst.pdf\\a.htm");
-        var pathDstPdf = pathSrcHtm.resolveSibling(TS_FileUtils.getNameLabel(pathSrcHtm) + ".pdf");
-        //var urlSrcHtm = TGS_Url.of("http://wikipedia.com");
-        var u = TS_FilePdfBox3UtilsHtml.toPdf(pathSrcHtm, pathDstPdf, pathFont);
-        //var u = TS_FilePdfBox3UtilsHtml.toPdf(urlSrcHtm, pathDstPdf, pathFont, strFontName);
-        if (u.isExcuse()) {
-            TGS_UnSafe.thrw(u.excuse());
-        }
-        d.cr("test_pdfbox3_htm_to_pdf", "see", pathDstPdf);
-    }
+//    private static void test_pdfbox3_sign_data_printer() {
+//        String data = """
+//                      - [2]: ObjectId: 1.3.6.1.5.5.7.1.1 Criticality=false
+//                      - AuthorityInfoAccess [
+//                      - [
+//                      - accessMethod: ocsp
+//                      - accessLocation: URIName: http://e5.o.lencr.org
+//                      - ,
+//                      - accessMethod: caIssuers
+//                      - accessLocation: URIName: http://e5.i.lencr.org/
+//                      - ]
+//                      - ]
+//                      - [3]: ObjectId: 2.5.29.35 Criticality=false
+//                      - AuthorityKeyIdentifier [
+//                      - KeyIdentifier [
+//                      - 0000: 9F 2B 5F CF 3C 21 4F 9D 04 B7 ED 2B 2C C4 C6 70 .+_. - 0010: 8B D2 D7 0D ....
+//                      - ]
+//                      - ]
+//                      - [4]: ObjectId: 2.5.29.19 Criticality=true
+//                      - BasicConstraints:[
+//                      - CA:false
+//                      - PathLen: undefined
+//                      - ]""".replace("- ", "");
+//        TGS_Func_In1<List<String>> printLines = lines -> {
+//            var indent = 1;
+//            for (var line : lines) {
+//                if (line.contains("[") && line.contains("]")) {
+//                    out.println(" - ".repeat(indent) + line);
+//                } else if (line.contains("[")) {
+//                    out.println(" - ".repeat(indent) + line);
+//                    indent++;
+//                } else if (line.contains("]")) {
+//                    indent--;
+//                    out.println(" - ".repeat(indent) + line);
+//                } else {
+//                    out.println(" - ".repeat(indent) + line);
+//                }
+//                if (indent < 1) {
+//                    indent = 1;
+//                }
+//            }
+//        };
+//        printLines.run(TGS_StringUtils.jre().toList_ln(data));
+//    }
+//
+//    private static void test_pdfbox3_sign_validate() {
+//        var dirSSL = pathP12.getParent();
+//        TS_FilePdfBox3UtilsSign.verify_preOperations_downloadTrustedCertificatesToDir(dirSSL);
+//        var trustedCerts = TS_FilePdfBox3UtilsSign.verify_preOperations_fetchTrustedCertificatesFromDir(dirSSL, pass);
+//        var pathPdf = Path.of("C:\\dat\\dat\\pub\\drp\\ALKOR\\2022\\234\\234_HelloImage.pdf");
+//        var result = TS_FilePdfBox3UtilsSign.verify(log -> d.cr("test_pdfbox3_sign_validate", log), null, pathPdf, trustedCerts);
+//        if (result.isExcuse()) {
+//            d.ct("test_pdfbox3_sign_validate", result.excuse());
+//            return;
+//        }
+//        out.println(result.value());
+//    }
+//
+//    private static void test_pdfbox3_htm_to_pdf() {
+//        var pathFont = Path.of("C:\\dat\\dat\\pub\\font\\Code2000-rdLO.ttf").getParent();
+//        var strFontName = "Code2000";
+//        var pathSrcHtm = Path.of("C:\\git\\tst\\com.tugalsan.tst.pdf\\a.htm");
+//        var pathDstPdf = pathSrcHtm.resolveSibling(TS_FileUtils.getNameLabel(pathSrcHtm) + ".pdf");
+//        //var urlSrcHtm = TGS_Url.of("http://wikipedia.com");
+//        var u = TS_FilePdfBox3UtilsHtml.toPdf(pathSrcHtm, pathDstPdf, pathFont);
+//        //var u = TS_FilePdfBox3UtilsHtml.toPdf(urlSrcHtm, pathDstPdf, pathFont, strFontName);
+//        if (u.isExcuse()) {
+//            TGS_UnSafe.thrw(u.excuse());
+//        }
+//        d.cr("test_pdfbox3_htm_to_pdf", "see", pathDstPdf);
+//    }
 //    
 //    private static void test_openpdf_htm_to_pdf() {
 //        var pathSrcHtm = Path.of("C:\\git\\tst\\com.tugalsan.tst.pdf\\a.htm");
@@ -251,7 +249,6 @@ public class Main {
 //    private static void test_pdfbox3_combine() {
 //        var pdfBase = Path.of("C:\\Users\\me\\Desktop\\PDF");
 //        var pdfDest = pdfBase.resolve("text.pdf");
-
 
 ////        TS_FileUtils.deleteFileIfExists(pdfDest);
 //        TS_FilePdfBox3UtilsText.createPageText(pdfDest, "ali gel 1 ali gel 2 ali gel 3  ali gel 4 ali gel 5 ali gel 6 ali gel 7 ali gel 8 ali gel 9 ali gel 10 ali gel 11 ali gel 12");
