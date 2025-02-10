@@ -20,7 +20,7 @@ module com.tugalsan.tst.pdf {
     requires com.tugalsan.api.stream;
     requires com.tugalsan.api.url;
     requires com.tugalsan.api.time;
-    requires com.tugalsan.api.unsafe;
+    
     requires com.tugalsan.api.union;
     requires com.tugalsan.api.random;
     requires com.tugalsan.api.file.pdf.openpdf;
@@ -30,7 +30,7 @@ module com.tugalsan.tst.pdf {
 //    requires com.tugalsan.api.tuple;
 //    requires com.tugalsan.api.input;
 //    requires com.tugalsan.api.shape;
-//    requires com.tugalsan.api.unsafe;
+//    
 //    requires com.tugalsan.api.file;
 //    requires com.tugalsan.api.file.img;
 //    requires com.tugalsan.api.file.pdf.pdfbox3;

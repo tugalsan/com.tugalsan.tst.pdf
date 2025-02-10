@@ -1,16 +1,21 @@
 package com.tugalsan.tst.pdf;
 
+import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsDocument;
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsFont;
+import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsPageAdd;
+import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsPageContentStream;
+import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsPageCreate;
+import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsSave;
+import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsText;
+import com.tugalsan.api.file.server.TS_FileUtils;
 import com.tugalsan.api.log.server.TS_Log;
 import com.tugalsan.api.sql.conn.server.TS_SQLConnAnchorUtils;
-import com.tugalsan.api.unsafe.client.TGS_UnSafe;
+import com.tugalsan.api.function.client.maythrow.checkedexceptions.TGS_FuncMTCEUtils;
 import java.nio.file.Path;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
-import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
 
 public class Main {
 
@@ -19,6 +24,38 @@ public class Main {
     final private static String pass = TS_SQLConnAnchorUtils.createAnchor(Path.of("c:\\dat\\sql\\cnn\\"), "autosqlweb").value().config.dbPassword;
 
     public static void main(String... args) {
+        TS_Thre
+        
+        
+        if (true){
+            return;
+        }
+        
+        d.cr("fileLoc", "#1");
+        var pathPdf = Path.of("C:\\Users\\me\\Desktop\\PDF\\pdfboxTest.pdf");
+        var fontSize = 12;
+        var fontLeading = 1.5f;
+        TS_FileUtils.deleteFileIfExists(pathPdf);
+        TS_FilePdfBox3UtilsDocument.run_new(doc -> {
+            d.cr("fileLoc", "#doc.1");
+            var append = false;
+            var pageA4 = TS_FilePdfBox3UtilsPageCreate.ofA(doc, 4, false);
+            TS_FilePdfBox3UtilsPageAdd.add(doc, pageA4);
+            TS_FilePdfBox3UtilsPageContentStream.run_pageContentStream(doc, pageA4, append, true, append, stream -> {
+                d.cr("fileLoc", "#stream.1");
+                TS_FilePdfBox3UtilsText.beginText(stream);
+                TS_FilePdfBox3UtilsText.newLine_locationXY(stream, 100, 100);
+                TS_FilePdfBox3UtilsText.newLine_setLeading(stream, fontSize, fontLeading);
+                TS_FilePdfBox3UtilsText.addText(stream, "ali gel");
+                TS_FilePdfBox3UtilsText.newLine(stream);
+                TS_FilePdfBox3UtilsText.addText(stream, "veli gel");
+                TS_FilePdfBox3UtilsText.endText(stream);
+                d.cr("fileLoc", "#stream.2");
+            });
+            TS_FilePdfBox3UtilsSave.save(doc, pathPdf, append);
+            d.cr("fileLoc", pathPdf);
+        });
+        d.cr("fileLoc", "#2");
 
         if (true) {
             return;
@@ -41,7 +78,7 @@ public class Main {
 
     //https://github.com/dhorions/boxable/wiki  
     private static void test_pdfbox3_boxable() {
-        TGS_UnSafe.run(() -> {
+        TGS_FuncMTCEUtils.run(() -> {
             var font = TS_FilePdfBox3UtilsFont.of_COURIER();
             var doc = new PDDocument();
             var page = new PDPage(PDRectangle.A4);
@@ -91,7 +128,7 @@ public class Main {
 //                      - CA:false
 //                      - PathLen: undefined
 //                      - ]""".replace("- ", "");
-//        TGS_Func_In1<List<String>> printLines = lines -> {
+//        TGS_FuncMTUCE_In1<List<String>> printLines = lines -> {
 //            var indent = 1;
 //            for (var line : lines) {
 //                if (line.contains("[") && line.contains("]")) {
@@ -135,7 +172,7 @@ public class Main {
 //        var u = TS_FilePdfBox3UtilsHtml.toPdf(pathSrcHtm, pathDstPdf, pathFont);
 //        //var u = TS_FilePdfBox3UtilsHtml.toPdf(urlSrcHtm, pathDstPdf, pathFont, strFontName);
 //        if (u.isExcuse()) {
-//            TGS_UnSafe.thrw(u.excuse());
+//            TGS_FuncMTUCEUtils.thrw(u.excuse());
 //        }
 //        d.cr("test_pdfbox3_htm_to_pdf", "see", pathDstPdf);
 //    }
@@ -198,7 +235,7 @@ public class Main {
 //                    signatureFieldName
 //            );
 //        } catch (Exception e) {
-//            TGS_UnSafe.throwIfInterruptedException(e);
+//            TGS_FuncUtils.throwIfInterruptedException(e);
 //            e.printStackTrace();
 //        }
 //    }
