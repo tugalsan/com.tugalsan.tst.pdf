@@ -2,6 +2,7 @@ package com.tugalsan.tst.pdf;
 
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsDocument;
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsFont;
+import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsHtml;
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsPageAdd;
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsPageContentStream;
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsPageCreate;
@@ -11,6 +12,9 @@ import com.tugalsan.api.file.server.TS_FileUtils;
 import com.tugalsan.api.log.server.TS_Log;
 import com.tugalsan.api.sql.conn.server.TS_SQLConnAnchorUtils;
 import com.tugalsan.api.function.client.maythrow.checkedexceptions.TGS_FuncMTCEUtils;
+import com.tugalsan.api.time.client.TGS_Time;
+import com.tugalsan.api.time.client.TGS_TimeUtils;
+import static java.lang.System.out;
 import java.nio.file.Path;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -24,13 +28,20 @@ public class Main {
     final private static String pass = TS_SQLConnAnchorUtils.createAnchor(Path.of("c:\\dat\\sql\\cnn\\"), "autosqlweb").value().config.dbPassword;
 
     public static void main(String... args) {
-        TS_Thre
-        
-        
-        if (true){
+        Path srcFont = Path.of("C:\\dat\\dat\\pub\\font\\Roboto-Regular.ttf");
+        Path srcHtml = Path.of("C:\\Users\\me\\Desktop\\PROJE\\mermaid.html");
+        Path dstPdf = Path.of("C:\\Users\\me\\Desktop\\PROJE\\mermaid.pdf");
+        var u = TS_FilePdfBox3UtilsHtml.toPdf(srcHtml, dstPdf, srcFont);
+        if (u.isExcuse()) {
+            d.ce("main", u.excuse().getMessage());
+        } else {
+            d.cr("main", "ok");
+        }
+
+        if (true) {
             return;
         }
-        
+
         d.cr("fileLoc", "#1");
         var pathPdf = Path.of("C:\\Users\\me\\Desktop\\PDF\\pdfboxTest.pdf");
         var fontSize = 12;
