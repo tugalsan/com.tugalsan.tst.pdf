@@ -11,7 +11,7 @@ import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsText;
 import com.tugalsan.api.file.server.TS_FileUtils;
 import com.tugalsan.api.log.server.TS_Log;
 import com.tugalsan.api.sql.conn.server.TS_SQLConnAnchorUtils;
-import com.tugalsan.api.function.client.maythrow.checkedexceptions.TGS_FuncMTCEUtils;
+import com.tugalsan.api.function.client.maythrowexceptions.checked.TGS_FuncMTCUtils;
 import com.tugalsan.api.time.client.TGS_Time;
 import com.tugalsan.api.time.client.TGS_TimeUtils;
 import static java.lang.System.out;
@@ -89,7 +89,7 @@ public class Main {
 
     //https://github.com/dhorions/boxable/wiki  
     private static void test_pdfbox3_boxable() {
-        TGS_FuncMTCEUtils.run(() -> {
+        TGS_FuncMTCUtils.run(() -> {
             var font = TS_FilePdfBox3UtilsFont.of_COURIER();
             var doc = new PDDocument();
             var page = new PDPage(PDRectangle.A4);
@@ -139,7 +139,7 @@ public class Main {
 //                      - CA:false
 //                      - PathLen: undefined
 //                      - ]""".replace("- ", "");
-//        TGS_FuncMTUCE_In1<List<String>> printLines = lines -> {
+//        TGS_FuncMTU_In1<List<String>> printLines = lines -> {
 //            var indent = 1;
 //            for (var line : lines) {
 //                if (line.contains("[") && line.contains("]")) {
@@ -183,7 +183,7 @@ public class Main {
 //        var u = TS_FilePdfBox3UtilsHtml.toPdf(pathSrcHtm, pathDstPdf, pathFont);
 //        //var u = TS_FilePdfBox3UtilsHtml.toPdf(urlSrcHtm, pathDstPdf, pathFont, strFontName);
 //        if (u.isExcuse()) {
-//            TGS_FuncMTUCEUtils.thrw(u.excuse());
+//            TGS_FuncMTUUtils.thrw(u.excuse());
 //        }
 //        d.cr("test_pdfbox3_htm_to_pdf", "see", pathDstPdf);
 //    }
