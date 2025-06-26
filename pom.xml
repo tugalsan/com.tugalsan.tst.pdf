@@ -74,6 +74,11 @@
         </dependency>-->
         <dependency>
             <groupId>${project.groupId}</groupId>
+            <artifactId>com.tugalsan.api.file.img.code</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
             <artifactId>com.tugalsan.api.file.pdf.pdfbox3</artifactId>
             <version>${project.version}</version>
         </dependency>

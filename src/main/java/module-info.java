@@ -25,6 +25,7 @@ module com.tugalsan.tst.pdf {
     requires com.tugalsan.api.random;
     requires com.tugalsan.api.file.pdf.openpdf;
     requires com.tugalsan.api.file.pdf.pdfbox3;
+    requires com.tugalsan.api.file.img.code;
 //    requires com.tugalsan.api.log;
 //    requires com.tugalsan.api.function;
 //    requires com.tugalsan.api.tuple;

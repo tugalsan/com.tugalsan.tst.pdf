@@ -1,8 +1,10 @@
 package com.tugalsan.tst.pdf;
 
+import com.tugalsan.api.file.img.code.server.TS_FileImageCodeQRUtils;
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsDocument;
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsFont;
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsHtml;
+import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsImage;
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsPageAdd;
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsPageContentStream;
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsPageCreate;
@@ -10,11 +12,8 @@ import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsSave;
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsText;
 import com.tugalsan.api.file.server.TS_FileUtils;
 import com.tugalsan.api.log.server.TS_Log;
-import com.tugalsan.api.sql.conn.server.TS_SQLConnAnchorUtils;
 import com.tugalsan.api.function.client.maythrowexceptions.checked.TGS_FuncMTCUtils;
-import com.tugalsan.api.time.client.TGS_Time;
-import com.tugalsan.api.time.client.TGS_TimeUtils;
-import static java.lang.System.out;
+import com.tugalsan.api.sql.conn.server.TS_SQLConnAnchor;
 import java.nio.file.Path;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -25,9 +24,21 @@ public class Main {
 
     final private static TS_Log d = TS_Log.of(Main.class);
     final private static Path pathP12 = Path.of("C:\\dat\\ssl\\tomcat.p12");
-    final private static String pass = TS_SQLConnAnchorUtils.createAnchor(Path.of("c:\\dat\\sql\\cnn\\"), "autosqlweb").value().config.dbPassword;
+    final private static String pass = TS_SQLConnAnchor.of(Path.of("c:\\dat\\sql\\cnn\\"), "autosqlweb").value().config.dbPassword;
 
     public static void main(String... args) {
+        var text = "ĞÜğüŞİşiÖÇöçıIiİ";
+        var qr0_img = TS_FileImageCodeQRUtils.toQR(text);
+        var qr1_img = TS_FileImageCodeQRUtils.toQRwithLabels("br:" + text, "top:" + text, "bottom:" + text);
+        var qr0_pdf = Path.of("C:\\Users\\me\\Desktop\\PDF\\qr0.pdf");
+        var qr1_pdf = Path.of("C:\\Users\\me\\Desktop\\PDF\\qr1.pdf");
+        TS_FilePdfBox3UtilsImage.toPdf_fromImage(qr0_img, qr0_pdf, 0.8f, true, true, true);
+        TS_FilePdfBox3UtilsImage.toPdf_fromImage(qr1_img, qr1_pdf, 0.8f, true, true, true);
+
+        if (true) {
+
+        }
+
         Path srcFont = Path.of("C:\\dat\\dat\\pub\\font\\Roboto-Regular.ttf");
         Path srcHtml = Path.of("C:\\Users\\me\\Desktop\\PROJE\\mermaid.html");
         Path dstPdf = Path.of("C:\\Users\\me\\Desktop\\PROJE\\mermaid.pdf");
