@@ -1,6 +1,10 @@
 package com.tugalsan.tst.pdf;
 
 import com.tugalsan.api.file.img.code.server.TS_FileImageCodeQRUtils;
+import com.tugalsan.api.file.img.server.TS_FileImageUtils;
+import com.tugalsan.api.file.pdf.openpdf.server.TS_FilePdfOpenPdfUtilsImage;
+import com.tugalsan.api.file.pdf.openpdf.server.TS_FilePdfOpenPdfUtilsPage;
+import com.tugalsan.api.file.pdf.openpdf.server.TS_FilePdfOpenPdfUtilsPageCompress;
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsDocument;
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsFont;
 import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsHtml;
@@ -30,13 +34,33 @@ public class Main {
         var text = "ĞÜğüŞİşiÖÇöçıIiİ";
         var qr0_img = TS_FileImageCodeQRUtils.toQR(text);
         var qr1_img = TS_FileImageCodeQRUtils.toQRwithLabels("br:" + text, "top:" + text, "bottom:" + text);
+        var qr0_jpg = TS_FileImageUtils.toFileTemp(qr0_img, 0.8f, ".jpg");
+        var qr1_jpg = TS_FileImageUtils.toFileTemp(qr1_img, 0.8f, ".jpg");
         var qr0_pdf = Path.of("C:\\Users\\me\\Desktop\\PDF\\qr0.pdf");
         var qr1_pdf = Path.of("C:\\Users\\me\\Desktop\\PDF\\qr1.pdf");
+
+        var u0 = TS_FilePdfOpenPdfUtilsImage.toPdf(
+                TS_FilePdfOpenPdfUtilsPageCompress.CompressionLevel.NORMAL,
+                TS_FilePdfOpenPdfUtilsPage.PAGE_INFO_A4_PORT_0_0_0_0,
+                qr0_pdf, 0.8f, qr0_jpg
+        );
+        var u1 = TS_FilePdfOpenPdfUtilsImage.toPdf(
+                TS_FilePdfOpenPdfUtilsPageCompress.CompressionLevel.NORMAL,
+                TS_FilePdfOpenPdfUtilsPage.PAGE_INFO_A4_PORT_0_0_0_0,
+                qr1_pdf, 0.8f, qr1_jpg
+        );
+        d.ce("u0", u0);
+        d.ce("u1", u1);
+
+        if (true) {
+            return;
+        }
+
         TS_FilePdfBox3UtilsImage.toPdf_fromImage(qr0_img, qr0_pdf, 0.8f, true, true, true);
         TS_FilePdfBox3UtilsImage.toPdf_fromImage(qr1_img, qr1_pdf, 0.8f, true, true, true);
 
         if (true) {
-
+            return;
         }
 
         Path srcFont = Path.of("C:\\dat\\dat\\pub\\font\\Roboto-Regular.ttf");
