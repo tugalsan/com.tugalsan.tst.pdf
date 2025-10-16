@@ -1,27 +1,17 @@
 package com.tugalsan.tst.pdf;
 
-import com.tugalsan.api.file.img.code.server.TS_FileImageCodeQRUtils;
-import com.tugalsan.api.file.pdf.openpdf.server.TS_FilePdfOpenPdfUtilsImage;
-import com.tugalsan.api.file.pdf.openpdf.server.TS_FilePdfOpenPdfUtilsPage;
-import com.tugalsan.api.file.pdf.openpdf.server.TS_FilePdfOpenPdfUtilsPageCompress;
-import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsDocument;
-import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsFont;
-import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsHtml;
-import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsImage;
-import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsPageAdd;
-import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsPageContentStream;
-import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsPageCreate;
-import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsSave;
-import com.tugalsan.api.file.pdf.pdfbox3.server.TS_FilePdfBox3UtilsText;
-import com.tugalsan.api.file.server.TS_FileUtils;
-import com.tugalsan.api.log.server.TS_Log;
-import com.tugalsan.api.function.client.maythrowexceptions.checked.TGS_FuncMTCUtils;
-import com.tugalsan.api.sql.conn.server.TS_SQLConnAnchor;
-import java.nio.file.Path;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import module com.tugalsan.api.file.img.code;
+import module com.tugalsan.api.file.pdf.openpdf;
+import module com.tugalsan.api.file.pdf.pdfbox3;
+import module com.tugalsan.api.file;
+import module com.tugalsan.api.log;
+import module com.tugalsan.api.function;
+import module com.tugalsan.api.sql.conn;
+import module com.tugalsan.api.string;
+import java.nio.file.*;
+import java.util.stream.*;
+import org.apache.pdfbox.pdmodel.*;
+import org.apache.pdfbox.pdmodel.common.*;
 
 public class Main {
 
@@ -30,9 +20,23 @@ public class Main {
     final private static String pass = TS_SQLConnAnchor.of(Path.of("c:\\dat\\sql\\cnn\\"), "autosqlweb").value().config.dbPassword;
 
     public static void main(String... args) {
+        var pathToExtractTextPdf = Path.of("C:\\dat\\dat\\usr\\admin\\tmp\\Sipariş Analizi (Alt Yüklenici)_5666276950671.pdf");
+        TS_FilePdfBox3UtilsDocument.run_randomAccess(pathToExtractTextPdf, doc -> {
+            var pageCount = TS_FilePdfBox3UtilsPageCount.count(doc);
+            IntStream.range(0, pageCount).forEachOrdered(pageIdx -> {
+                var pageText = TS_FilePdfBox3UtilsText.readTextPage(doc, pageIdx);
+//                d.cr("main", "pageIdx", pageIdx, "pageText", pageText);
+                var lineFound = TGS_StringUtils.jre().toList_ln(pageText).stream().filter(line -> line.startsWith("COPY_PAGE_BEGIN")).findAny().orElse("null");
+                d.cr("main", "pageIdx", pageIdx, "lineFound", lineFound);
+            });
+        });
+        if (true) {
+
+        }
+
         var text = "ĞÜğüŞİşiÖÇöçıIiİ";
-        var qr0_img = TS_FileImageCodeQRUtils.toQR(text);
-        var qr1_img = TS_FileImageCodeQRUtils.toQRwithLabels("br:" + text, "top:" + text, "bottom:" + text);
+        var qr0_img = TS_FileImageCodeQRUtils.toQR(640, 480, text);
+        var qr1_img = TS_FileImageCodeQRUtils.toQRwithLabels(650, 480, "br:" + text, "top:" + text, "bottom:" + text);
         var qr0_pdf = Path.of("C:\\Users\\me\\Desktop\\PDF\\qr0.pdf");
         var qr1_pdf = Path.of("C:\\Users\\me\\Desktop\\PDF\\qr1.pdf");
 
